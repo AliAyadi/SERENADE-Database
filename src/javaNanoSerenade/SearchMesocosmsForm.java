@@ -169,6 +169,12 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     jLabelTap.setForeground(new java.awt.Color(102, 102, 102));
     jLabelTap.setText("Tap keywords:");
 
+    jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextFieldSearchActionPerformed(evt);
+        }
+    });
+
     jButtonValidateSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/search_button.png"))); // NOI18N
     jButtonValidateSearch.setBorderPainted(false);
     jButtonValidateSearch.setContentAreaFilled(false);
@@ -376,41 +382,92 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonValidateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateSearchActionPerformed
-        //délcare une varable selection our renvoyer le combobox fields
-       //String selection = (String) jComboBoxFields.getSelectedItem();
+        
         //int measureTime = (Integer) jComboBoxMT.getSelectedItem();
         //int mt = Integer.parseInt(measureTime );
+        
+        
+        //déclaration et initialisation de LB et HB
         int measureTime = jComboBoxMT.getSelectedIndex();
+        double LB = 0.0, HB = 0.0;
+        LB = Float.parseFloat(jTextFieldLowerB.getText());
+        HB = Float.parseFloat(jTextFieldHigherB.getText());
         
         //
         
         String valToSearch = jTextFieldSearch.getText();
         
+        // déclaration et initialisation de mes 3 variables de 
+        String cond ="";
+        String cond1 ="";
+        String cond2 ="";
         
+        //délcare une varable selection our renvoyer le combobox fields
+       String selectedField = (String) jComboBoxFields.getSelectedItem();
         
+       switch (selectedField) {
+        case ", doi":
+            cond = "lower(doi) like lower('%"+valToSearch+"%')";
+            break;
+        case ", Total_time":
+            cond = "Total_time BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Total_dose":
+            cond = "Total_dose BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Ecosystem":
+            cond = "lower(Ecosystem) like lower('%"+valToSearch+"%')";
+            break;
+        case ", Injection_mode":
+            cond = "lower(Injection_mode) like lower('%"+valToSearch+"%')";
+            break;
+        case ", Nanoparticle":
+            cond = "lower(Nanoparticle) like lower('%"+valToSearch+"%')";
+            break;
+        case ", Measure_time":
+            cond = "Measure_time BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", PH":
+            cond = "PH BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Temperature":
+            cond = "Temperature BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Conductivity":
+            cond = "Conductivity BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Dissolved_oxygen":
+            cond = "Dissolved_oxygen BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", ORP_water":
+            cond = "ORP_water BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", ORP_sediment":
+            cond = "ORP_sediment BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Concentration_water":
+            cond = "Concentration_water BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Dissolved_concentration":
+            cond = "Dissolved_concentration BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Concentration_sediment":
+            cond = "Concentration_sediment BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", TBARS":
+            cond = "TBARS BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", TAOC":
+            cond = "TAOC BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Algae":
+            cond = "Algae BETWEEN ("+LB+","+HB+")";
+            break;
+        case ", Bacteria":
+            cond = "Bacteria BETWEEN ("+LB+","+HB+")";
+            break;
+        } 
         
-        
-        
-        
-//        if (jComboBoxFields.getSelectedItem().equals("doi") || jComboBoxFields.getSelectedItem().toString().contains("injection_mode")
-//                ||  jComboBoxFields.getSelectedItem().toString().contains("Ecoystem")|| jComboBoxFields.getSelectedItem().toString().contains("Nanoparticle")) 
-//        {           jLabelLowerB.setVisible(false);
-//                    jTextFieldLowerB.setVisible(false);
-//                    jLabelHigherB.setVisible(false);
-//                    jTextFieldHigherB.setVisible(false); 
-//        }
-//        else if (jComboBoxFields.getSelectedItem().toString().contains("Total_time") || jComboBoxFields.getSelectedItem().toString().contains("Total_dose")
-//                || jComboBoxFields.getSelectedItem().toString().contains("PH")|| jComboBoxFields.getSelectedItem().toString().contains("Temperature") 
-//                || jComboBoxFields.getSelectedItem().toString().contains("Conductivity") || jComboBoxFields.getSelectedItem().toString().contains("Dissolved_oxygen")
-//                || jComboBoxFields.getSelectedItem().toString().contains("ORP_water")|| jComboBoxFields.getSelectedItem().toString().contains("ORP_sediment")
-//                || jComboBoxFields.getSelectedItem().toString().contains("Concentration_water") || jComboBoxFields.getSelectedItem().toString().contains("Concentration_sediment")
-//                || jComboBoxFields.getSelectedItem().toString().contains("Dissolved_concentration")|| jComboBoxFields.getSelectedItem().toString().contains("TBARS")
-//                || jComboBoxFields.getSelectedItem().toString().contains("TAOC") || jComboBoxFields.getSelectedItem().toString().contains("Algae")|| jComboBoxFields.getSelectedItem().toString().contains("Bacteria")) 
-//        {           jLabelTap.setVisible(false);
-//                    jTextFieldSearch.setVisible(false); 
-//        }
-        
-
         
                 
         
@@ -501,68 +558,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 //                
 //                System.out.println(attributs);
         
-//        switch (attributs) {
-//        case ", DOI":
-//            System.out.println("Monday");
-//            break;
-//        case ", Total_time":
-//            System.out.println("Tuesday");
-//            break;
-//        case ", Total_dose":
-//            System.out.println("Wednesday");
-//            break;
-//        case ", Ecosystem":
-//            System.out.println("Thursday");
-//            break;
-//        case ", Injection_mode":
-//            System.out.println("Wednesday");
-//            break;
-//        case ", Nanoparticle":
-//            System.out.println("Wednesday");
-//            break;
-//        case ", Measure_time":
-//            System.out.println("Friday");
-//            break;
-//        case ", PH":
-//            System.out.println("Saturday");
-//            break;
-//        case ", Temperature":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Conductivity":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Dissolved_oxygen":
-//            System.out.println("Sunday");
-//            break;
-//        case ", ORP_water":
-//            System.out.println("Sunday");
-//            break;
-//        case ", ORP_sediment":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Concentration_water":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Dissolved_concentration":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Concentration_sediment":
-//            System.out.println("Sunday");
-//            break;
-//        case ", TBARS":
-//            System.out.println("Sunday");
-//            break;
-//        case ", TAOC":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Algae":
-//            System.out.println("Sunday");
-//            break;
-//        case ", Bacteria":
-//            System.out.println("Sunday");
-//            break;
-//        }
+        
         
         
 //String Search3Query = "SELECT e.IDE, s.IDS, m.IDM" + attributs + " FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS Order by Measure_time";
@@ -788,6 +784,10 @@ String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, 
                         jTextFieldHigherB.setVisible(true);
             }
     }//GEN-LAST:event_jComboBoxFieldsActionPerformed
+
+    private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchActionPerformed
 
     /**
      * @param args the command line arguments
