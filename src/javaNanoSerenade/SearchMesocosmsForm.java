@@ -53,8 +53,6 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButtonClearCheckboxes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonPrintResults = new javax.swing.JButton();
@@ -72,6 +70,8 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         jLabelHigherB = new javax.swing.JLabel();
         jTextFieldLowerB = new javax.swing.JTextField();
         jTextFieldHigherB = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -87,242 +87,233 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jButtonClearCheckboxes.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonClearCheckboxes.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jButtonClearCheckboxes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/reset_button.png"))); // NOI18N
+        jButtonClearCheckboxes.setBorderPainted(false);
+        jButtonClearCheckboxes.setContentAreaFilled(false);
+        jButtonClearCheckboxes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClearCheckboxes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearCheckboxesActionPerformed(evt);
+            }
+        });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/exit_button.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setDefaultCapable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButtonPrintResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/print_button_1.png"))); // NOI18N
+        jButtonPrintResults.setBorderPainted(false);
+        jButtonPrintResults.setContentAreaFilled(false);
+        jButtonPrintResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jButtonExportResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/EXP8button.png"))); // NOI18N
+        jButtonExportResults.setBorderPainted(false);
+        jButtonExportResults.setContentAreaFilled(false);
+        jButtonExportResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanel13.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Search fields", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("Select Field (s): ");
+
+        jComboBoxFields.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All fields", "doi", "Total_time", "Total_dose", "Injection_mode", "Ecosystem", "Nanoparticle", "PH", "Temperature", "Conductivity", "Dissolved_oxygen", "ORP_water", "ORP_sediment", "Concentration_water", "Concentration_sediment", "Dissolved_concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
+        jComboBoxFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFieldsActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("at ");
+
+        jComboBoxMT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All measure times", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel15.setText("Measure time: ");
+
+        jLabelTap.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabelTap.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelTap.setText("Tap keywords:");
+
+        jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSearchActionPerformed(evt);
+            }
+        });
+
+        jButtonValidateSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/search_button.png"))); // NOI18N
+        jButtonValidateSearch.setBorderPainted(false);
+        jButtonValidateSearch.setContentAreaFilled(false);
+        jButtonValidateSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonValidateSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValidateSearchActionPerformed(evt);
+            }
+        });
+
+        jLabelLowerB.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabelLowerB.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelLowerB.setText("Lower bound:");
+
+        jLabelHigherB.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabelHigherB.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelHigherB.setText("Higher bound:");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel10)
+                .addGap(10, 10, 10)
+                .addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabelTap)
+                .addGap(10, 10, 10)
+                .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabelLowerB)
+                .addGap(10, 10, 10)
+                .addComponent(jTextFieldLowerB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabelHigherB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldHigherB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel15)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addGap(360, 360, 360)
+                        .addComponent(jButtonValidateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabelTap)
+                    .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLowerB)
+                    .addComponent(jLabelHigherB)
+                    .addComponent(jTextFieldLowerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldHigherB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButtonValidateSearch)
+                .addGap(8, 8, 8))
+        );
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
 
             }
-        )
-        //make the jtable cell not editable
-        {public boolean isCellEditable(int row, int column){return false;}}
-    );
-    jTable1.setGridColor(new java.awt.Color(204, 255, 0));
+        ));
+        jScrollPane2.setViewportView(table);
 
-    jTable1.setSelectionBackground(new java.awt.Color(0, 153, 0));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127)
+                .addComponent(jButtonExportResults, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137)
+                .addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addGap(499, 499, 499))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonExportResults)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(253, Short.MAX_VALUE))
+        );
 
-    jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            //jTable1MouseClicked(evt);
-        }
-    });
-    jScrollPane1.setViewportView(jTable1);
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
 
-    jButtonClearCheckboxes.setBackground(new java.awt.Color(204, 204, 204));
-    jButtonClearCheckboxes.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-    jButtonClearCheckboxes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/reset_button.png"))); // NOI18N
-    jButtonClearCheckboxes.setBorderPainted(false);
-    jButtonClearCheckboxes.setContentAreaFilled(false);
-    jButtonClearCheckboxes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    jButtonClearCheckboxes.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButtonClearCheckboxesActionPerformed(evt);
-        }
-    });
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
-    jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/exit_button.png"))); // NOI18N
-    jButton1.setBorderPainted(false);
-    jButton1.setContentAreaFilled(false);
-    jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    jButton1.setDefaultCapable(false);
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
-        }
-    });
+        jMenu3.setText("Help");
 
-    jButtonPrintResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/print_button_1.png"))); // NOI18N
-    jButtonPrintResults.setBorderPainted(false);
-    jButtonPrintResults.setContentAreaFilled(false);
-    jButtonPrintResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu5.setText("Tutorial");
+        jMenu3.add(jMenu5);
+        jMenu3.add(jSeparator1);
 
-    jButtonExportResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/EXP8button.png"))); // NOI18N
-    jButtonExportResults.setBorderPainted(false);
-    jButtonExportResults.setContentAreaFilled(false);
-    jButtonExportResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu4.setText("About the SERENADE");
+        jMenu3.add(jMenu4);
 
-    jPanel13.setBackground(new java.awt.Color(204, 204, 204));
-    jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Search fields", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jMenuBar1.add(jMenu3);
 
-    jLabel10.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-    jLabel10.setText("Select Field (s): ");
+        setJMenuBar(jMenuBar1);
 
-    jComboBoxFields.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All fields", "doi", "Total_time", "Total_dose", "Injection_mode", "Ecosystem", "Nanoparticle", "PH", "Temperature", "Conductivity", "Dissolved_oxygen", "ORP_water", "ORP_sediment", "Concentration_water", "Concentration_sediment", "Dissolved_concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
-    jComboBoxFields.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jComboBoxFieldsActionPerformed(evt);
-        }
-    });
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
-    jLabel14.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-    jLabel14.setText("at ");
-
-    jComboBoxMT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All measure times", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-    jLabel15.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-    jLabel15.setText("Measure time: ");
-
-    jLabelTap.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabelTap.setForeground(new java.awt.Color(102, 102, 102));
-    jLabelTap.setText("Tap keywords:");
-
-    jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jTextFieldSearchActionPerformed(evt);
-        }
-    });
-
-    jButtonValidateSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/search_button.png"))); // NOI18N
-    jButtonValidateSearch.setBorderPainted(false);
-    jButtonValidateSearch.setContentAreaFilled(false);
-    jButtonValidateSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    jButtonValidateSearch.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButtonValidateSearchActionPerformed(evt);
-        }
-    });
-
-    jLabelLowerB.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabelLowerB.setForeground(new java.awt.Color(102, 102, 102));
-    jLabelLowerB.setText("Lower bound:");
-
-    jLabelHigherB.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-    jLabelHigherB.setForeground(new java.awt.Color(102, 102, 102));
-    jLabelHigherB.setText("Higher bound:");
-
-    javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-    jPanel13.setLayout(jPanel13Layout);
-    jPanel13Layout.setHorizontalGroup(
-        jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel13Layout.createSequentialGroup()
-            .addGap(29, 29, 29)
-            .addComponent(jLabel10)
-            .addGap(10, 10, 10)
-            .addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(20, 20, 20)
-            .addComponent(jLabelTap)
-            .addGap(10, 10, 10)
-            .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(20, 20, 20)
-            .addComponent(jLabelLowerB)
-            .addGap(10, 10, 10)
-            .addComponent(jTextFieldLowerB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jLabelHigherB)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTextFieldHigherB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jLabel14)
-                    .addGap(20, 20, 20)
-                    .addComponent(jLabel15)
-                    .addGap(10, 10, 10)
-                    .addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(25, 25, 25))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                    .addGap(360, 360, 360)
-                    .addComponent(jButtonValidateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())))
-    );
-    jPanel13Layout.setVerticalGroup(
-        jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel13Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel10)
-                .addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel14)
-                .addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel15)
-                .addComponent(jLabelTap)
-                .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabelLowerB)
-                .addComponent(jLabelHigherB)
-                .addComponent(jTextFieldLowerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jTextFieldHigherB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-            .addComponent(jButtonValidateSearch)
-            .addGap(8, 8, 8))
-    );
-
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(131, 131, 131)
-                            .addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(127, 127, 127)
-                            .addComponent(jButtonExportResults, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(137, 137, 137)
-                            .addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(125, 125, 125)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 28, Short.MAX_VALUE))
-                .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addContainerGap())
-    );
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(33, 33, 33)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonExportResults)
-                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(196, Short.MAX_VALUE))
-    );
-
-    jMenu1.setText("File");
-    jMenuBar1.add(jMenu1);
-
-    jMenu2.setText("Edit");
-    jMenuBar1.add(jMenu2);
-
-    jMenu3.setText("Help");
-
-    jMenu5.setText("Tutorial");
-    jMenu3.add(jMenu5);
-    jMenu3.add(jSeparator1);
-
-    jMenu4.setText("About the SERENADE");
-    jMenu3.add(jMenu4);
-
-    jMenuBar1.add(jMenu3);
-
-    setJMenuBar(jMenuBar1);
-
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 4, Short.MAX_VALUE))
-    );
-
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
     
 //    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
@@ -371,7 +362,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         jComboBoxMT.setSelectedIndex(0);
         
         //clear the JTable first
-       jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID", "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH", "Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water", "Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria"}));
+       table.setModel(new DefaultTableModel(null, new Object[]{"ID", "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH", "Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water", "Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria"}));
         //reafficher le bouton  search
         jButtonValidateSearch.setVisible(true);
         
@@ -383,12 +374,11 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonValidateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateSearchActionPerformed
-        
+        try {
       
         PreparedStatement stGetSearch;
 	ResultSet searchResult;
  
-        
         
         
         //déclaration et initialisation de LB et HB
@@ -592,16 +582,15 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     
         
         String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
-         try {       
+                
         
         stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
         searchResult = stGetSearch.executeQuery();
                         
+        DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
         
-        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-            
-            Object[] row;
-            
+        Object[] row;
+        
             while(searchResult.next())
             {
                 row = new Object[21];
@@ -730,11 +719,11 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldHigherB;
     private javax.swing.JTextField jTextFieldLowerB;
     private javax.swing.JTextField jTextFieldSearch;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
