@@ -385,10 +385,8 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
         
          PreparedStatement stGetSearch;
-		
-                ResultSet searchResult;
-		       
-		try {
+	ResultSet searchResult;
+	try {       
                     
         
         
@@ -397,213 +395,196 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
         
         //déclaration et initialisation de LB et HB
-        int measureTime = jComboBoxMT.getSelectedIndex();
-        
-        
         float LB = Float.parseFloat(jTextFieldLowerB.getText());
         float HB = Float.parseFloat(jTextFieldHigherB.getText());
         
         //keywords à chercher
         String valToSearch = jTextFieldSearch.getText();
         
+        
+        
+            
+            
         // déclaration et initialisation de mes 3 variables de 
         String cond ="";
         String cond1 ="";
         String cond2 ="";
         
         //une varable selectedField pour renvoyer le combobox field sélectioné
-       String selectedField = (String) jComboBoxFields.getSelectedItem();
+       int selectedField =  jComboBoxFields.getSelectedIndex();
         
        switch (selectedField) {
-        case "All fields":
+        case 0:
             cond1 = "";
             break;
-        case "doi":
+        case 1:
             cond1 = "LOWER(doi) LIKE '%"+valToSearch+"%'";
             break;
-        case "Total_time":
+        case 2:
             cond1 = "Total_time BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Total_dose":
+        case 3:
             cond1 = "Total_dose BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Ecosystem":
+        case 4:
             cond1 = "LOWER(Ecosystem) LIKE '%"+valToSearch+"%'";
             break;
-        case "Injection_mode":
+        case 5:
             cond1 = "LOWER(Injection_mode) LIKE '%"+valToSearch+"%'";
             break;
-        case "Nanoparticle":
+        case 6:
             cond1 = "LOWER(Nanoparticle) LIKE '%"+valToSearch+"%'";
             break;
-        case "Measure_time":
+        case 7:
             cond1 = "Measure_time BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "PH":
+        case 8:
             cond1 = "PH BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Temperature":
+        case 9:
             cond1 = "Temperature BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Conductivity":
+        case 10:
             cond1 = "Conductivity BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Dissolved_oxygen":
+        case 11:
             cond1 = "Dissolved_oxygen BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "ORP_water":
+        case 12:
             cond1 = "ORP_water BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "ORP_sediment":
+        case 13:
             cond1 = "ORP_sediment BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Concentration_water":
+        case 14:
             cond1 = "Concentration_water BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Dissolved_concentration":
+        case 15:
             cond1 = "Dissolved_concentration BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Concentration_sediment":
+        case 16:
             cond1 = "Concentration_sediment BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "TBARS":
+        case 17:
             cond1 = "TBARS BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "TAOC":
+        case 18:
             cond1 = "TAOC BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Algae":
+        case 19:
             cond1 = "Algae BETWEEN "+LB+" AND "+HB+" ";
             break;
-        case "Bacteria":
+        case 20:
             cond1 = "Bacteria BETWEEN "+LB+" AND "+HB+" ";
             break; 
         } 
         
         
-        String selectedTime = (String) jComboBoxFields.getSelectedItem();
+        //String selectedTime = (String) jComboBoxFields.getSelectedItem();
+        int measureTime = jComboBoxMT.getSelectedIndex();
         
-       switch (selectedTime) {
-        case "All Measure times":
+       switch (measureTime) {
+        case 0:
             cond2 = "";
             break;
-        case "1":
+        case 1:
             cond2 = " Measure_time == 1";
             break;
-        case "2":
+        case 2:
             cond2 = " Measure_time == 2";
             break;
-        case "3":
+        case 3:
             cond2 = " Measure_time == 3";
             break;
-        case "4":
+        case 4:
             cond2 = " Measure_time == 4";
             break;
-        case "5":
+        case 5:
             cond2 = " Measure_time == 5";
             break;
-        case "6":
+        case 6:
             cond2 = " Measure_time == 6";
             break;
-        case "7":
+        case 7:
             cond2 = " Measure_time == 7";
             break;
-        case "8":
+        case 8:
             cond2 = " Measure_time == 8";
             break;
-        case "9":
+        case 9:
             cond2 = " Measure_time == 9";
             break;
-        case "10":
+        case 10:
             cond2 = " Measure_time == 10";
             break;
-        case "11":
+        case 11:
             cond2 = " Measure_time == 11";
             break;
-        case "12":
+        case 12:
             cond2 = " Measure_time == 12";
             break;
-        case "13":
+        case 13:
             cond2 = " Measure_time == 13";
             break;
-        case "14":
+        case 14:
             cond2 = " Measure_time == 14";
             break;
-        case "15":
+        case 15:
             cond2 = " Measure_time == 15";
             break;
-        case "16":
+        case 16:
             cond2 = " Measure_time == 16";
             break;
-        case "17":
+        case 17:
             cond2 = " Measure_time == 17";
             break;
-        case "18":
+        case 18:
             cond2 = " Measure_time == 18";
             break;
-        case "19":
+        case 19:
             cond2 = " Measure_time == 19";
             break;
-        case "20":
+        case 20:
             cond2 = " Measure_time == 20";
             break;
-        case "21":
+        case 21:
             cond2 = " Measure_time == 21";
             break;
-        case "22":
+        case 22:
             cond2 = " Measure_time == 22";
             break;
-        case "23":
+        case 23:
             cond2 = " Measure_time == 23";
             break;
-        case "24":
+        case 24:
             cond2 = " Measure_time == 24";
             break;
-        case "25":
+        case 25:
             cond2 = " Measure_time == 25";
             break;
-        case "26":
+        case 26:
             cond2 = " Measure_time == 26";
             break;
-        case "27":
+        case 27:
             cond2 =  " Measure_time == 27";
             break;
-        case "28":
+        case 28:
             cond2 = " Measure_time == 28";
             break;
-        case "29":
+        case 29:
             cond2 = " Measure_time == 29";
             break;
-        case "30":
+        case 30:
             cond2 = " Measure_time == 30";
             break;
-         case "31":
-            cond2 = "Measure_time == 31";
+         case 31:
+            cond2 = " Measure_time == 31";
             break;        
         }         
         
-        
-        
-        
-       
-        
-       
-       
-       
-       
-       
-        
-        
-        
-        
+
 	        
-//        
-//String SearchQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS Order by Measure_time";
-//String Search2Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND Measure_time= " + measureTime +" Order by Measure_time";
-//String selection = (String) jComboBoxFields.getSelectedItem();
-//String Search3Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? AND Measure_time= " + measureTime +" Order by Measure_time";
-//String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? Order by Measure_time";
-//        		
+       		
                
 
                     
@@ -653,12 +634,11 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
                         jTable1.setModel(tableModel);
                             
                           
-                        jButtonValidateSearch.setVisible(false);
+                        //jButtonValidateSearch.setVisible(false);
                     
                      
                     } catch (Exception e) {
-			Logger.getLogger(MESOCOSM.class.getName()).log(Level.SEVERE, null, e);
-                        JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
+			    JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
 			
 		}
                 
