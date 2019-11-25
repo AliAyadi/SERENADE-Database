@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SearchMesocosmsForm extends javax.swing.JFrame {
     MY_CONNECTION my_connection = new MY_CONNECTION();
-    MESOCOSM mesocosm = new MESOCOSM();
+    
     /**
      * Creates new form ManageRoomsForm
      */
@@ -389,12 +389,12 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
         //déclaration et initialisation de LB et HB
         int measureTime = jComboBoxMT.getSelectedIndex();
-        double LB = 0.0, HB = 0.0;
-        LB = Float.parseFloat(jTextFieldLowerB.getText());
-        HB = Float.parseFloat(jTextFieldHigherB.getText());
         
-        //
         
+        float LB = Float.parseFloat(jTextFieldLowerB.getText());
+        float HB = Float.parseFloat(jTextFieldHigherB.getText());
+        
+        //keywords à chercher
         String valToSearch = jTextFieldSearch.getText();
         
         // déclaration et initialisation de mes 3 variables de 
@@ -402,69 +402,72 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         String cond1 ="";
         String cond2 ="";
         
-        //délcare une varable selection our renvoyer le combobox fields
+        //une varable selectedField pour renvoyer le combobox field sélectioné
        String selectedField = (String) jComboBoxFields.getSelectedItem();
         
        switch (selectedField) {
+        case "All fields":
+            cond1 = "";
+            break;
         case "doi":
-            cond = "lower(doi) like lower('%"+valToSearch+"%')";
+            cond1 = "LOWER(doi) LIKE '%"+valToSearch+"%'";
             break;
         case "Total_time":
-            cond = "Total_time BETWEEN ("+LB+","+HB+")";
+            cond1 = "Total_time BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Total_dose":
-            cond = "Total_dose BETWEEN ("+LB+","+HB+")";
+            cond1 = "Total_dose BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Ecosystem":
-            cond = "lower(Ecosystem) like lower('%"+valToSearch+"%')";
+            cond1 = "LOWER(Ecosystem) LIKE '%"+valToSearch+"%'";
             break;
         case "Injection_mode":
-            cond = "lower(Injection_mode) like lower('%"+valToSearch+"%')";
+            cond1 = "LOWER(Injection_mode) LIKE '%"+valToSearch+"%'";
             break;
         case "Nanoparticle":
-            cond = "lower(Nanoparticle) like lower('%"+valToSearch+"%')";
+            cond1 = "LOWER(Nanoparticle) LIKE '%"+valToSearch+"%'";
             break;
         case "Measure_time":
-            cond = "Measure_time BETWEEN ("+LB+","+HB+")";
+            cond1 = "Measure_time BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "PH":
-            cond = "PH BETWEEN ("+LB+","+HB+")";
+            cond1 = "PH BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Temperature":
-            cond = "Temperature BETWEEN ("+LB+","+HB+")";
+            cond1 = "Temperature BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Conductivity":
-            cond = "Conductivity BETWEEN ("+LB+","+HB+")";
+            cond1 = "Conductivity BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Dissolved_oxygen":
-            cond = "Dissolved_oxygen BETWEEN ("+LB+","+HB+")";
+            cond1 = "Dissolved_oxygen BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "ORP_water":
-            cond = "ORP_water BETWEEN ("+LB+","+HB+")";
+            cond1 = "ORP_water BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "ORP_sediment":
-            cond = "ORP_sediment BETWEEN ("+LB+","+HB+")";
+            cond1 = "ORP_sediment BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Concentration_water":
-            cond = "Concentration_water BETWEEN ("+LB+","+HB+")";
+            cond1 = "Concentration_water BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Dissolved_concentration":
-            cond = "Dissolved_concentration BETWEEN ("+LB+","+HB+")";
+            cond1 = "Dissolved_concentration BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Concentration_sediment":
-            cond = "Concentration_sediment BETWEEN ("+LB+","+HB+")";
+            cond1 = "Concentration_sediment BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "TBARS":
-            cond = "TBARS BETWEEN ("+LB+","+HB+")";
+            cond1 = "TBARS BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "TAOC":
-            cond = "TAOC BETWEEN ("+LB+","+HB+")";
+            cond1 = "TAOC BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Algae":
-            cond = "Algae BETWEEN ("+LB+","+HB+")";
+            cond1 = "Algae BETWEEN "+LB+" AND "+HB+" ";
             break;
         case "Bacteria":
-            cond = "Bacteria BETWEEN ("+LB+","+HB+")";
+            cond1 = "Bacteria BETWEEN "+LB+" AND "+HB+" ";
             break; 
         } 
         
