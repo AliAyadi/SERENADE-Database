@@ -383,6 +383,15 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 
     private void jButtonValidateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateSearchActionPerformed
         
+        
+         PreparedStatement stGetSearch;
+		
+                ResultSet searchResult;
+		       
+		try {
+                    
+        
+        
         //int measureTime = (Integer) jComboBoxMT.getSelectedItem();
         //int mt = Integer.parseInt(measureTime );
         
@@ -476,103 +485,100 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
        switch (selectedTime) {
         case "All Measure times":
-            cond2 = cond2;
-            break;
-        case "0":
-            cond2 = cond2 +" Measure_time == 0";
+            cond2 = "";
             break;
         case "1":
-            cond2 = cond2 +" Measure_time == 1";
+            cond2 = " Measure_time == 1";
             break;
         case "2":
-            cond2 = cond2 +" Measure_time == 2";
+            cond2 = " Measure_time == 2";
             break;
         case "3":
-            cond2 = cond2 +" Measure_time == 3";
+            cond2 = " Measure_time == 3";
             break;
         case "4":
-            cond2 = cond2 +" Measure_time == 4";
+            cond2 = " Measure_time == 4";
             break;
         case "5":
-            cond2 = cond2 +" Measure_time == 5";
+            cond2 = " Measure_time == 5";
             break;
         case "6":
-            cond2 = cond2 +" Measure_time == 6";
+            cond2 = " Measure_time == 6";
             break;
         case "7":
-            cond2 = cond2 +" Measure_time == 7";
+            cond2 = " Measure_time == 7";
             break;
         case "8":
-            cond2 = cond2 +" Measure_time == 8";
+            cond2 = " Measure_time == 8";
             break;
         case "9":
-            cond2 = cond2 +" Measure_time == 9";
+            cond2 = " Measure_time == 9";
             break;
         case "10":
-            cond2 = cond2 +" Measure_time == 10";
+            cond2 = " Measure_time == 10";
             break;
         case "11":
-            cond2 = cond2 +" Measure_time == 11";
+            cond2 = " Measure_time == 11";
             break;
         case "12":
-            cond2 = cond2 +" Measure_time == 12";
+            cond2 = " Measure_time == 12";
             break;
         case "13":
-            cond2 = cond2 +" Measure_time == 13";
+            cond2 = " Measure_time == 13";
             break;
         case "14":
-            cond2 = cond2 +" Measure_time == 14";
+            cond2 = " Measure_time == 14";
             break;
         case "15":
-            cond2 = cond2 +" Measure_time == 15";
+            cond2 = " Measure_time == 15";
             break;
         case "16":
-            cond2 = cond2 +" Measure_time == 16";
+            cond2 = " Measure_time == 16";
             break;
         case "17":
-            cond2 = cond2 +" Measure_time == 17";
+            cond2 = " Measure_time == 17";
             break;
         case "18":
-            cond2 = cond2 +" Measure_time == 18";
+            cond2 = " Measure_time == 18";
             break;
         case "19":
-            cond2 = cond2 +" Measure_time == 19";
+            cond2 = " Measure_time == 19";
             break;
         case "20":
-            cond2 = cond2 +" Measure_time == 20";
+            cond2 = " Measure_time == 20";
             break;
         case "21":
-            cond2 = cond2 +" Measure_time == 21";
+            cond2 = " Measure_time == 21";
             break;
         case "22":
-            cond2 = cond2 +" Measure_time == 22";
+            cond2 = " Measure_time == 22";
             break;
         case "23":
-            cond2 = cond2 +" Measure_time == 23";
+            cond2 = " Measure_time == 23";
             break;
         case "24":
-            cond2 = cond2 +" Measure_time == 24";
+            cond2 = " Measure_time == 24";
             break;
         case "25":
-            cond2 = cond2 +" Measure_time == 25";
+            cond2 = " Measure_time == 25";
             break;
         case "26":
-            cond2 = cond2 +" Measure_time == 26";
+            cond2 = " Measure_time == 26";
             break;
         case "27":
-            cond2 = cond2 +" Measure_time == 27";
+            cond2 =  " Measure_time == 27";
             break;
         case "28":
-            cond2 = cond2 +" Measure_time == 28";
+            cond2 = " Measure_time == 28";
             break;
         case "29":
-            cond2 = cond2 +" Measure_time == 29";
+            cond2 = " Measure_time == 29";
             break;
         case "30":
-            cond2 = cond2 +" Measure_time == 30";
+            cond2 = " Measure_time == 30";
             break;
          case "31":
-            cond2 = cond2 +"Measure_time == 31";
+            cond2 = "Measure_time == 31";
             break;        
         }         
         
@@ -587,7 +593,6 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
        
        
         
- String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
         
         
         
@@ -599,12 +604,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 //String Search3Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? AND Measure_time= " + measureTime +" Order by Measure_time";
 //String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? Order by Measure_time";
 //        		
-                PreparedStatement stGetSearch;
-		
-                ResultSet searchResult;
-		       
-		try {
-                    
+               
 
                     
                         if(cond1.isEmpty())
@@ -618,6 +618,9 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
                             if(!(cond2.isEmpty()))
                             cond = cond + " AND " + cond2;
                             }
+                        
+                         String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS "+cond+"Order by Measure_time";       
+
                         stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
                         searchResult = stGetSearch.executeQuery();
                         
@@ -668,7 +671,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         //String selectedValue = (String) jComboBoxFields.getSelectedItem();
         
         if (jComboBoxFields.getSelectedItem().toString().contains("doi") || jComboBoxFields.getSelectedItem().toString().contains("Injection_mode")
-                ||  jComboBoxFields.getSelectedItem().toString().contains("Ecoystem")|| jComboBoxFields.getSelectedItem().toString().contains("Nanoparticle")) 
+                ||  jComboBoxFields.getSelectedItem().toString().contains("Ecosystem")|| jComboBoxFields.getSelectedItem().toString().contains("Nanoparticle")) 
             {           jLabelLowerB.setVisible(false);
                         jTextFieldLowerB.setVisible(false);
                         jLabelHigherB.setVisible(false);
