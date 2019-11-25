@@ -12,6 +12,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -388,7 +389,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 	ResultSet searchResult;
  
         
-        try {
+        
         
         //déclaration et initialisation de LB et HB
         int LB = Integer.parseInt(jTextFieldLowerB.getText());
@@ -589,37 +590,45 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             cond = cond + " AND " + cond2;
             }
     
+        
         String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
-                
+         try {       
         
         stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
         searchResult = stGetSearch.executeQuery();
                         
-        java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
-                        
-        int colums = rsmetadata.getColumnCount();
-                        
+        
         DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-                        
-        Vector columns_name = new Vector();
-                        
-        Vector data_rows = new Vector();
-                        
-        for(int i=1; i < colums; i++){
-            columns_name.addElement(rsmetadata.getColumnName(i));
-        }
-        tableModel.setColumnIdentifiers(columns_name);
             
-        while (searchResult.next()) {
-            data_rows = new Vector();
-                for(int j=1; j < colums; j++){
-                    data_rows.addElement(searchResult.getString(j));
-                }
-            tableModel.addRow(data_rows);
-                          
-        }
-                          
-        jTable1.setModel(tableModel);
+            Object[] row;
+            
+            while(searchResult.next())
+            {
+                row = new Object[21];
+                row[0] = searchResult.getLong(1)+"_"+searchResult.getLong(2)+"_"+searchResult.getLong(3);
+                row[1] = searchResult.getString(4);
+                row[2] = searchResult.getInt(5);
+                row[3] = searchResult.getFloat(6);
+                row[4] = searchResult.getString(7);
+                row[5] = searchResult.getString(8);
+                row[6] = searchResult.getInt(9);
+                row[7] = searchResult.getString(10);
+                row[8] = searchResult.getFloat(11);
+                row[9] = searchResult.getFloat(12);
+                row[10] = searchResult.getFloat(13);
+                row[11] = searchResult.getFloat(14);
+                row[12] = searchResult.getFloat(15);
+                row[13] = searchResult.getFloat(16);
+                row[14] = searchResult.getFloat(17);
+                row[15] = searchResult.getFloat(18);
+                row[16] = searchResult.getFloat(19);
+                row[17] = searchResult.getFloat(20);
+                row[18] = searchResult.getFloat(21);
+                row[19] = searchResult.getFloat(22);
+                row[20] = searchResult.getFloat(23);
+               
+                tableModel.addRow(row);
+            }
                             
         } catch (Exception e) {
 		JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
