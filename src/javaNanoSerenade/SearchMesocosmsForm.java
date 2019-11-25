@@ -383,28 +383,21 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 
     private void jButtonValidateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateSearchActionPerformed
         
-        
-         PreparedStatement stGetSearch;
+      
+        PreparedStatement stGetSearch;
 	ResultSet searchResult;
-	try {       
-                    
+ 
         
-        
-        //int measureTime = (Integer) jComboBoxMT.getSelectedItem();
-        //int mt = Integer.parseInt(measureTime );
-        
+        try {
         
         //déclaration et initialisation de LB et HB
-        float LB = Float.parseFloat(jTextFieldLowerB.getText());
-        float HB = Float.parseFloat(jTextFieldHigherB.getText());
+        int LB = Integer.parseInt(jTextFieldLowerB.getText());
+        int HB = Integer.parseInt(jTextFieldHigherB.getText());
         
         //keywords à chercher
         String valToSearch = jTextFieldSearch.getText();
         
-        
-        
-            
-            
+           
         // déclaration et initialisation de mes 3 variables de 
         String cond ="";
         String cond1 ="";
@@ -595,9 +588,10 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             if(!(cond2.isEmpty()))
             cond = cond + " AND " + cond2;
             }
-                        
-        String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS "+cond+"Order by Measure_time";       
-
+    
+        String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
+                
+        
         stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
         searchResult = stGetSearch.executeQuery();
                         
@@ -617,7 +611,6 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         tableModel.setColumnIdentifiers(columns_name);
             
         while (searchResult.next()) {
-                            
             data_rows = new Vector();
                 for(int j=1; j < colums; j++){
                     data_rows.addElement(searchResult.getString(j));
