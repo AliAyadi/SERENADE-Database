@@ -465,8 +465,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             break;
         case "Bacteria":
             cond = "Bacteria BETWEEN ("+LB+","+HB+")";
-            break;
-        default: System.err.println("No found"); 
+            break; 
         } 
         
         
@@ -571,8 +570,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             break;
          case "31":
             cond2 = cond2 +"Measure_time == 31";
-            break;         
-         default: System.err.println("No found"); 
+            break;        
         }         
         
         
