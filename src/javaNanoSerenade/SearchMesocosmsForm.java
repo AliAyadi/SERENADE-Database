@@ -584,63 +584,54 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
 
 	        
-       		
-               
+       	if(cond1.isEmpty())
+        {
+            if(!(cond2.isEmpty()))
+            cond = " WHERE " + cond2;
+        }
+        else
+            {
+            cond = " WHERE " + cond1;
+            if(!(cond2.isEmpty()))
+            cond = cond + " AND " + cond2;
+            }
+                        
+        String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS "+cond+"Order by Measure_time";       
 
-                    
-                        if(cond1.isEmpty())
-                        {
-                             if(!(cond2.isEmpty()))
-                                cond = " WHERE " + cond2;
-                        }
-                        else
-                            {
-                            cond = " WHERE " + cond1;
-                            if(!(cond2.isEmpty()))
-                            cond = cond + " AND " + cond2;
-                            }
+        stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
+        searchResult = stGetSearch.executeQuery();
                         
-                         String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS "+cond+"Order by Measure_time";       
-
-                        stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
-                        searchResult = stGetSearch.executeQuery();
+        java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
                         
-                         java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
+        int colums = rsmetadata.getColumnCount();
                         
-                        int colums = rsmetadata.getColumnCount();
+        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
                         
-                                               
-                        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
+        Vector columns_name = new Vector();
                         
-                        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
                         
-                        Vector data_rows = new Vector();
-                        
-                        for(int i=1; i < colums; i++){
-                            columns_name.addElement(rsmetadata.getColumnName(i));
-                        }
-                        tableModel.setColumnIdentifiers(columns_name);
+        for(int i=1; i < colums; i++){
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        tableModel.setColumnIdentifiers(columns_name);
             
-                        while (searchResult.next()) {
+        while (searchResult.next()) {
                             
-                            data_rows = new Vector();
-                            for(int j=1; j < colums; j++){
-                                data_rows.addElement(searchResult.getString(j));
-                            }
-                            tableModel.addRow(data_rows);
-                            
-                        }
-                        
-                        jTable1.setModel(tableModel);
-                            
+            data_rows = new Vector();
+                for(int j=1; j < colums; j++){
+                    data_rows.addElement(searchResult.getString(j));
+                }
+            tableModel.addRow(data_rows);
                           
-                        //jButtonValidateSearch.setVisible(false);
-                    
-                     
-                    } catch (Exception e) {
-			    JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
+        }
+                          
+        jTable1.setModel(tableModel);
+                            
+        } catch (Exception e) {
+		JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
 			
-		}
+	}
                 
                  
         
