@@ -406,172 +406,198 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
        String selectedField = (String) jComboBoxFields.getSelectedItem();
         
        switch (selectedField) {
-        case ", doi":
+        case "doi":
             cond = "lower(doi) like lower('%"+valToSearch+"%')";
             break;
-        case ", Total_time":
+        case "Total_time":
             cond = "Total_time BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Total_dose":
+        case "Total_dose":
             cond = "Total_dose BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Ecosystem":
+        case "Ecosystem":
             cond = "lower(Ecosystem) like lower('%"+valToSearch+"%')";
             break;
-        case ", Injection_mode":
+        case "Injection_mode":
             cond = "lower(Injection_mode) like lower('%"+valToSearch+"%')";
             break;
-        case ", Nanoparticle":
+        case "Nanoparticle":
             cond = "lower(Nanoparticle) like lower('%"+valToSearch+"%')";
             break;
-        case ", Measure_time":
+        case "Measure_time":
             cond = "Measure_time BETWEEN ("+LB+","+HB+")";
             break;
-        case ", PH":
+        case "PH":
             cond = "PH BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Temperature":
+        case "Temperature":
             cond = "Temperature BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Conductivity":
+        case "Conductivity":
             cond = "Conductivity BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Dissolved_oxygen":
+        case "Dissolved_oxygen":
             cond = "Dissolved_oxygen BETWEEN ("+LB+","+HB+")";
             break;
-        case ", ORP_water":
+        case "ORP_water":
             cond = "ORP_water BETWEEN ("+LB+","+HB+")";
             break;
-        case ", ORP_sediment":
+        case "ORP_sediment":
             cond = "ORP_sediment BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Concentration_water":
+        case "Concentration_water":
             cond = "Concentration_water BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Dissolved_concentration":
+        case "Dissolved_concentration":
             cond = "Dissolved_concentration BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Concentration_sediment":
+        case "Concentration_sediment":
             cond = "Concentration_sediment BETWEEN ("+LB+","+HB+")";
             break;
-        case ", TBARS":
+        case "TBARS":
             cond = "TBARS BETWEEN ("+LB+","+HB+")";
             break;
-        case ", TAOC":
+        case "TAOC":
             cond = "TAOC BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Algae":
+        case "Algae":
             cond = "Algae BETWEEN ("+LB+","+HB+")";
             break;
-        case ", Bacteria":
+        case "Bacteria":
             cond = "Bacteria BETWEEN ("+LB+","+HB+")";
             break;
+        default: System.err.println("No found"); 
         } 
         
         
-                
+        String selectedTime = (String) jComboBoxFields.getSelectedItem();
+        
+       switch (selectedTime) {
+        case "All Measure times":
+            cond2 = cond2;
+            break;
+        case "0":
+            cond2 = cond2 +" Measure_time == 0";
+            break;
+        case "1":
+            cond2 = cond2 +" Measure_time == 1";
+            break;
+        case "2":
+            cond2 = cond2 +" Measure_time == 2";
+            break;
+        case "3":
+            cond2 = cond2 +" Measure_time == 3";
+            break;
+        case "4":
+            cond2 = cond2 +" Measure_time == 4";
+            break;
+        case "5":
+            cond2 = cond2 +" Measure_time == 5";
+            break;
+        case "6":
+            cond2 = cond2 +" Measure_time == 6";
+            break;
+        case "7":
+            cond2 = cond2 +" Measure_time == 7";
+            break;
+        case "8":
+            cond2 = cond2 +" Measure_time == 8";
+            break;
+        case "9":
+            cond2 = cond2 +" Measure_time == 9";
+            break;
+        case "10":
+            cond2 = cond2 +" Measure_time == 10";
+            break;
+        case "11":
+            cond2 = cond2 +" Measure_time == 11";
+            break;
+        case "12":
+            cond2 = cond2 +" Measure_time == 12";
+            break;
+        case "13":
+            cond2 = cond2 +" Measure_time == 13";
+            break;
+        case "14":
+            cond2 = cond2 +" Measure_time == 14";
+            break;
+        case "15":
+            cond2 = cond2 +" Measure_time == 15";
+            break;
+        case "16":
+            cond2 = cond2 +" Measure_time == 16";
+            break;
+        case "17":
+            cond2 = cond2 +" Measure_time == 17";
+            break;
+        case "18":
+            cond2 = cond2 +" Measure_time == 18";
+            break;
+        case "19":
+            cond2 = cond2 +" Measure_time == 19";
+            break;
+        case "20":
+            cond2 = cond2 +" Measure_time == 20";
+            break;
+        case "21":
+            cond2 = cond2 +" Measure_time == 21";
+            break;
+        case "22":
+            cond2 = cond2 +" Measure_time == 22";
+            break;
+        case "23":
+            cond2 = cond2 +" Measure_time == 23";
+            break;
+        case "24":
+            cond2 = cond2 +" Measure_time == 24";
+            break;
+        case "25":
+            cond2 = cond2 +" Measure_time == 25";
+            break;
+        case "26":
+            cond2 = cond2 +" Measure_time == 26";
+            break;
+        case "27":
+            cond2 = cond2 +" Measure_time == 27";
+            break;
+        case "28":
+            cond2 = cond2 +" Measure_time == 28";
+            break;
+        case "29":
+            cond2 = cond2 +" Measure_time == 29";
+            break;
+        case "30":
+            cond2 = cond2 +" Measure_time == 30";
+            break;
+         case "31":
+            cond2 = cond2 +"Measure_time == 31";
+            break;         
+         default: System.err.println("No found"); 
+        }         
         
         
         
         
+       
+        
+       
+       
+       
+       
+       
+        
+ String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
         
         
         
-        
-        
-//        String attributs ="";
+	        
 //        
-//
-//                if (jCheckBoxDOI.isSelected()) {
-//                attributs = attributs + ", DOI";
-//                }
-//                if(jCheckBoxTotalTime.isSelected()) {
-//                attributs = attributs + ", Total_time";    
-//                }
-//                if(jCheckBoxtOTALdOSE.isSelected()) {
-//                attributs = attributs + ", Total_dose";    
-//                }
-//                if(jCheckBoxEcosystem.isSelected()) {
-//                attributs = attributs + ", Ecosystem";    
-//                }
-//                if (jCheckBoxInjectionMode.isSelected()) {
-//                attributs = attributs + ", Injection_mode";
-//                }
-//                if(jCheckBoxName.isSelected()) {
-//                attributs = attributs + ", Nanoparticle";    
-//                }
-//                if(jCheckBoxMeasureTime.isSelected()) {
-//                attributs = attributs + ", Measure_time";    
-//                }
-//                if(jCheckBoxPH.isSelected()) {
-//                attributs = attributs + ", PH" ;  
-//                }
-//                if (jCheckBoxTemp.isSelected()) {
-//                attributs = attributs + ", Temperature";
-//                }
-//                if(jCheckBoxConductivity.isSelected()) {
-//                attributs = attributs + ", Conductivity";    
-//                }
-//                if(jCheckBoxDissOxy.isSelected()) {
-//                attributs = attributs + ", Dissolved_oxygen";    
-//                }
-//                //if(jCheckBoxDissOrgCarb.isSelected()) {
-//                //attributs = attributs ;    
-//                //}
-//                if(jCheckBoxORPWat.isSelected()) {
-//                attributs = attributs + ", ORP_water";    
-//                }
-//                if(jCheckBoxORPSed.isSelected()) {
-//                attributs = attributs + ", ORP_sediment";   
-//                }
-//               // if(jCheckBoxSpeciationWater.isSelected()) {
-//                //attributs = attributs + "";    
-//                //}
-//                if(jCheckBoxConcentrationWater.isSelected()) {
-//                attributs = attributs + ", Concentration_water";   
-//                }
-//                if(jCheckBoxDissConcentration.isSelected()) {
-//                attributs = attributs + ", Dissolved_concentration" ;    
-//                }
-//                //if(jCheckBoxSize.isSelected()) {
-//                //attributs = attributs + "";    
-//                //}
-//                //if(jCheckBoxSpeciationSed.isSelected()) {
-//                //attributs = attributs + "";    
-//               // }
-//                if(jCheckBoxConcentartionSed.isSelected()) {
-//                attributs = attributs + ", Concentration_sediment"; 
-//                }
-//                if(jCheckBoxTABARS.isSelected()) {
-//                attributs = attributs + ", TBARS";   
-//                }
-//                if(jCheckBoxTAOC.isSelected()) {
-//                attributs = attributs + ", TAOC";    
-//                }
-//                if(jCheckBoxaLGAE.isSelected()) {
-//                attributs = attributs + ", Algae";    
-//                }
-//                if(jCheckBoxbACTERIA.isSelected()) {
-//                attributs = attributs + ", Bacteria";    
-//                }
-//                
-//                
-//                System.out.println(attributs);
-        
-        
-        
-        
-//String Search3Query = "SELECT e.IDE, s.IDS, m.IDM" + attributs + " FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS Order by Measure_time";
-//String Search4Query = "SELECT e.IDE, s.IDS, m.IDM" + attributs + " FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND Measure_time= " + measureTime +" Order by Measure_time";
-//String Search5Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND (doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria) LIKE '%"+valToSearch+"%' Order by Measure_time";
-        	        
-        
-String SearchQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS Order by Measure_time";
-String Search2Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND Measure_time= " + measureTime +" Order by Measure_time";
-String selection = (String) jComboBoxFields.getSelectedItem();
-String Search3Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? AND Measure_time= " + measureTime +" Order by Measure_time";
-String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? Order by Measure_time";
-        		
+//String SearchQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS Order by Measure_time";
+//String Search2Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND Measure_time= " + measureTime +" Order by Measure_time";
+//String selection = (String) jComboBoxFields.getSelectedItem();
+//String Search3Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? AND Measure_time= " + measureTime +" Order by Measure_time";
+//String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS AND " +selection+ "=? Order by Measure_time";
+//        		
                 PreparedStatement stGetSearch;
 		
                 ResultSet searchResult;
@@ -580,17 +606,25 @@ String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, 
                     
 
                     
-                     if(jComboBoxFields.getSelectedItem() == "All fields" &&  jComboBoxMT.getSelectedItem() == "All measure times" )
-                    {
-                        stGetSearch = my_connection.createConnection().prepareStatement(SearchQuery);
+                        if(cond1.isEmpty())
+                        {
+                             if(!(cond2.isEmpty()))
+                                cond = " WHERE " + cond2;
+                        }
+                        else
+                            {
+                            cond = " WHERE " + cond1;
+                            if(!(cond2.isEmpty()))
+                            cond = cond + " AND " + cond2;
+                            }
+                        stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
                         searchResult = stGetSearch.executeQuery();
                         
                          java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
                         
                         int colums = rsmetadata.getColumnCount();
                         
-                        
-                        
+                                               
                         DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
                         
                         Vector columns_name = new Vector();
@@ -616,139 +650,11 @@ String Search4Query = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, 
                             
                           
                         jButtonValidateSearch.setVisible(false);
-                    }
-                      if(jComboBoxFields.getSelectedItem() == "All fields" &&  jComboBoxMT.getSelectedIndex() == measureTime )
-                    {
-                        stGetSearch = my_connection.createConnection().prepareStatement(Search2Query);
-                        searchResult = stGetSearch.executeQuery();
-                        
-                        
-                         java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
-                        
-                        int colums = rsmetadata.getColumnCount();
-                        
-                        
-                        
-                        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-                        
-                        Vector columns_name = new Vector();
-                        
-                        Vector data_rows = new Vector();
-                        
-                        for(int i=1; i < colums; i++){
-                            columns_name.addElement(rsmetadata.getColumnName(i));
-                        }
-                        tableModel.setColumnIdentifiers(columns_name);
-            
-                        
-                        while (searchResult.next()) {
-                            
-                            data_rows = new Vector();
-                            for(int j=1; j < colums; j++){
-                                data_rows.addElement(searchResult.getString(j));
-                            }
-                            tableModel.addRow(data_rows);
-                            
-                        }
-                        
-                        jTable1.setModel(tableModel);
-                            
-                        
-                        jButtonValidateSearch.setVisible(false);
-                    }
+                    
                      
-                     
-                          if( jComboBoxMT.getSelectedIndex() == measureTime )
-                    {
-                        
-                       
-                        stGetSearch = my_connection.createConnection().prepareStatement(Search3Query);
-                        
-                        
-                        stGetSearch.setString(1, jTextFieldSearch.getText());
-                        
-                        searchResult = stGetSearch.executeQuery();
-                        
-                         java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
-                        
-                        int colums = rsmetadata.getColumnCount();
-                        
-                        
-                        
-                        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-                        
-                        Vector columns_name = new Vector();
-                        
-                        Vector data_rows = new Vector();
-                        
-                        for(int i=1; i < colums; i++){
-                            columns_name.addElement(rsmetadata.getColumnName(i));
-                        }
-                        tableModel.setColumnIdentifiers(columns_name);
-            
-                        
-                        while (searchResult.next()) {
-                            
-                            data_rows = new Vector();
-                            for(int j=1; j < colums; j++){
-                                data_rows.addElement(searchResult.getString(j));
-                            }
-                            tableModel.addRow(data_rows);
-                            
-                        }
-                        
-                        jTable1.setModel(tableModel);
-                            
-                        
-                        jButtonValidateSearch.setVisible(false);
-                    }
-                       if( jComboBoxMT.getSelectedItem() == "All measure times" )
-                    {
-                        
-                       
-                        stGetSearch = my_connection.createConnection().prepareStatement(Search4Query);
-                        
-                        
-                        stGetSearch.setString(1, jTextFieldSearch.getText());
-                        
-                        searchResult = stGetSearch.executeQuery();
-                        
-                         java.sql.ResultSetMetaData rsmetadata = searchResult.getMetaData();
-                        
-                        int colums = rsmetadata.getColumnCount();
-                        
-                        
-                        
-                        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-                        
-                        Vector columns_name = new Vector();
-                        
-                        Vector data_rows = new Vector();
-                        
-                        for(int i=1; i < colums; i++){
-                            columns_name.addElement(rsmetadata.getColumnName(i));
-                        }
-                        tableModel.setColumnIdentifiers(columns_name);
-            
-                        
-                        while (searchResult.next()) {
-                            
-                            data_rows = new Vector();
-                            for(int j=1; j < colums; j++){
-                                data_rows.addElement(searchResult.getString(j));
-                            }
-                            tableModel.addRow(data_rows);
-                            
-                        }
-                        
-                        jTable1.setModel(tableModel);
-                            
-                        
-                        jButtonValidateSearch.setVisible(false);
-                    }                   
                     } catch (Exception e) {
 			Logger.getLogger(MESOCOSM.class.getName()).log(Level.SEVERE, null, e);
-                        JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Searc Mesocosm", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
 			
 		}
                 
