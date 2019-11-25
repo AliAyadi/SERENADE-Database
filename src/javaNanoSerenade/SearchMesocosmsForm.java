@@ -8,6 +8,7 @@ package javaNanoSerenade;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -362,7 +363,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         jComboBoxMT.setSelectedIndex(0);
         
         //clear the JTable first
-       table.setModel(new DefaultTableModel(null, new Object[]{"ID", "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH", "Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water", "Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria"}));
+       table.setModel(new DefaultTableModel(null, new Object[]{"DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH", "Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water", "Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria"}));
         //reafficher le bouton  search
         jButtonValidateSearch.setVisible(true);
         
@@ -390,9 +391,9 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
            
         // déclaration et initialisation de mes 3 variables de 
-        String cond ="";
-        String cond1 ="";
-        String cond2 ="";
+        String cond = "";
+        String cond1 = "";
+        String cond2 = "";
         
         //une varable selectedField pour renvoyer le combobox field sélectioné
        int selectedField =  jComboBoxFields.getSelectedIndex();
@@ -571,7 +572,11 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
        	if(cond1.isEmpty())
         {
             if(!(cond2.isEmpty()))
+            {
             cond = " WHERE " + cond2;
+            }else{
+               cond = cond; 
+            }
         }
         else
             {
@@ -581,7 +586,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             }
     
         
-        String SearchGQuery = "SELECT e.IDE, s.IDS, m.IDM, doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
+        String SearchGQuery = "SELECT doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
                 
         
         stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
@@ -593,34 +598,38 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
             while(searchResult.next())
             {
-                row = new Object[21];
-                row[0] = searchResult.getLong(1)+"_"+searchResult.getLong(2)+"_"+searchResult.getLong(3);
-                row[1] = searchResult.getString(4);
-                row[2] = searchResult.getInt(5);
-                row[3] = searchResult.getFloat(6);
-                row[4] = searchResult.getString(7);
-                row[5] = searchResult.getString(8);
-                row[6] = searchResult.getInt(9);
-                row[7] = searchResult.getString(10);
-                row[8] = searchResult.getFloat(11);
-                row[9] = searchResult.getFloat(12);
-                row[10] = searchResult.getFloat(13);
-                row[11] = searchResult.getFloat(14);
-                row[12] = searchResult.getFloat(15);
-                row[13] = searchResult.getFloat(16);
-                row[14] = searchResult.getFloat(17);
-                row[15] = searchResult.getFloat(18);
-                row[16] = searchResult.getFloat(19);
-                row[17] = searchResult.getFloat(20);
-                row[18] = searchResult.getFloat(21);
-                row[19] = searchResult.getFloat(22);
-                row[20] = searchResult.getFloat(23);
+                row = new Object[20];
+                row[0] = searchResult.getString(1);
+                row[1] = searchResult.getInt(2);
+                row[2] = searchResult.getFloat(3);
+                row[3] = searchResult.getString(4);
+                row[4] = searchResult.getString(5);
+                row[5] = searchResult.getInt(6);
+                row[6] = searchResult.getString(7);
+                row[7] = searchResult.getFloat(8);
+                row[8] = searchResult.getFloat(9);
+                row[9] = searchResult.getFloat(10);
+                row[10] = searchResult.getFloat(11);
+                row[11] = searchResult.getFloat(12);
+                row[12] = searchResult.getFloat(13);
+                row[13] = searchResult.getFloat(14);
+                row[14] = searchResult.getFloat(15);
+                row[15] = searchResult.getFloat(16);
+                row[16] = searchResult.getFloat(17);
+                row[17] = searchResult.getFloat(18);
+                row[18] = searchResult.getFloat(19);
+                row[19] = searchResult.getFloat(20);
                
                 tableModel.addRow(row);
             }
+            
+            stGetSearch.close();
+            
                             
         } catch (Exception e) {
-		JOptionPane.showMessageDialog(rootPane, "Sorry, no results were found matching your criteria. ", "Search Mesocosm", JOptionPane.INFORMATION_MESSAGE);
+            e.printStackTrace();
+                    
+        
 			
 	}
                 
