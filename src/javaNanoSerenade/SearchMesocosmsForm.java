@@ -156,10 +156,7 @@ public class SearchMesocosmsForm extends JFrame {
 		jLabel10.setForeground(new java.awt.Color(102, 102, 102));
 		jLabel10.setText("Select Field (s): ");
 
-		jComboBoxFields.setModel(new DefaultComboBoxModel<>(
-				new String[] { "All fields", "Doi", "Total Time", "Total Dose", "Injection Mode", "Ecosystem", "Nanoparticle", "PH",
-						"Temperature", "Conductivity", "Dissolved Oxygen", "ORP Water", "ORP Sediment", "Concentration Water",
-						"Concentration Sediment", "Dissolved Concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
+		jComboBoxFields.setModel(new DefaultComboBoxModel<String>(comboboxFieldList));
 		jComboBoxFields.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jComboBoxFieldsActionPerformed(evt);
@@ -351,7 +348,7 @@ public class SearchMesocosmsForm extends JFrame {
 
 		// clear the JTable first
 		table.setModel(new DefaultTableModel(null,
-				new Object[] { "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH",
+				new String[] { "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH",
 						"Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water",
 						"Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria" }));
 		// reafficher le bouton search
@@ -385,67 +382,67 @@ public class SearchMesocosmsForm extends JFrame {
 		String cond2 = "";
 
 		// une varable selectedField pour renvoyer le combobox field sélectioné
-		int selectedField = jComboBoxFields.getSelectedIndex();
+		String selectedField = jComboBoxFields.getSelectedItem().toString().trim().toLowerCase();
 
 		switch (selectedField) {
-		case 1:
+		case "doi":
 			cond1 = "LOWER(doi) LIKE '%" + valToSearch + "%'";
 			break;
-		case 2:
+		case "total time":
 			cond1 = "Total_time BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 3:
+		case "total dose":
 			cond1 = "Total_dose BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 4:
+		case "ecosystem":
 			cond1 = "LOWER(Ecosystem) LIKE '%" + valToSearch + "%'";
 			break;
-		case 5:
+		case "injection mode":
 			cond1 = "LOWER(Injection_mode) LIKE '%" + valToSearch + "%'";
 			break;
-		case 6:
+		case "nanoparticle":
 			cond1 = "LOWER(Nanoparticle) LIKE '%" + valToSearch + "%'";
 			break;
-		case 7:
+		case "measure time":
 			cond1 = "Measure_time BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 8:
+		case "ph":
 			cond1 = "PH BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 9:
+		case "temperature":
 			cond1 = "Temperature BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 10:
+		case "conductivity":
 			cond1 = "Conductivity BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 11:
+		case "dissolved oxygen":
 			cond1 = "Dissolved_oxygen BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 12:
+		case "orp water":
 			cond1 = "ORP_water BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 13:
+		case "orp sediment":
 			cond1 = "ORP_sediment BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 14:
+		case "concentration water":
 			cond1 = "Concentration_water BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 15:
+		case "dissolved concentration":
 			cond1 = "Dissolved_concentration BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 16:
+		case "concentration sediment":
 			cond1 = "Concentration_sediment BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 17:
+		case "tbars":
 			cond1 = "TBARS BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 18:
+		case "taoc":
 			cond1 = "TAOC BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 19:
+		case "algae":
 			cond1 = "Algae BETWEEN " + LB + " AND " + HB + " ";
 			break;
-		case 20:
+		case "bacteria":
 			cond1 = "Bacteria BETWEEN " + LB + " AND " + HB + " ";
 			break;
 		default:
@@ -455,20 +452,18 @@ public class SearchMesocosmsForm extends JFrame {
 		// String selectedTime = (String) jComboBoxFields.getSelectedItem();
 		int measureTime = jComboBoxMT.getSelectedIndex();
 		if (measureTime != 0)
-			cond2 = " Measure_time == " + measureTime;
+			cond2 = " Measure_time=" + measureTime;
 
 		System.out.println(cond);
 		System.out.println(cond1);
 		System.out.println(cond2);
 
 		if (cond1.isEmpty()) {
-			if (!(cond2.isEmpty())) {
-				cond = " WHERE " + cond2;
-			} else {
-				cond = cond;
-			}
+			if (!(cond2.isEmpty()))
+				cond = " AND " + cond2;
+
 		} else {
-			cond = " WHERE " + cond1;
+			cond = " AND " + cond1;
 			if (!(cond2.isEmpty()))
 				cond = cond + " AND " + cond2;
 		}
@@ -478,41 +473,24 @@ public class SearchMesocosmsForm extends JFrame {
 			String SearchGQuery = "SELECT doi, Total_time, Total_dose, Injection_mode,	 Ecosystem, Measure_time, Nanoparticle,"
 					+ " PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water,"
 					+ "Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s,"
-					+ " measure m WHERE e.IDE = s.IDE AND s.IDS =  m.IDS " + cond + "Order by Measure_time";
+					+ " measure m WHERE e.IDE = s.IDE AND s.IDS =  m.IDS " + cond + " Order by Measure_time";
 
 			stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
 			searchResult = stGetSearch.executeQuery();
 
-			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			table.setModel(new DefaultTableModel(null,
 					new Object[] { "DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH",
 							"Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water",
 							"Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria" }));
+			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 
 			Object[] row;
 
 			while (searchResult.next()) {
 				row = new Object[20];
-				row[0] = searchResult.getString(1);
-				row[1] = searchResult.getInt(2);
-				row[2] = searchResult.getFloat(3);
-				row[3] = searchResult.getString(4);
-				row[4] = searchResult.getString(5);
-				row[5] = searchResult.getInt(6);
-				row[6] = searchResult.getString(7);
-				row[7] = searchResult.getFloat(8);
-				row[8] = searchResult.getFloat(9);
-				row[9] = searchResult.getFloat(10);
-				row[10] = searchResult.getFloat(11);
-				row[11] = searchResult.getFloat(12);
-				row[12] = searchResult.getFloat(13);
-				row[13] = searchResult.getFloat(14);
-				row[14] = searchResult.getFloat(15);
-				row[15] = searchResult.getFloat(16);
-				row[16] = searchResult.getFloat(17);
-				row[17] = searchResult.getFloat(18);
-				row[18] = searchResult.getFloat(19);
-				row[19] = searchResult.getFloat(20);
+				for (int i = 0; i < row.length; i++) {
+					row[i] = searchResult.getString(i + 1);
+				}
 
 				tableModel.addRow(row);
 			}
@@ -521,7 +499,7 @@ public class SearchMesocosmsForm extends JFrame {
 
 			//
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}// GEN-LAST:event_jButtonValidateSearchActionPerformed
 
@@ -646,6 +624,10 @@ public class SearchMesocosmsForm extends JFrame {
 	public static final ArrayList<String> NumberFields = new ArrayList<String>(
 			Arrays.asList("total time", "total dose", "ph", "temperature", "conductivity", "dissolved oxygen", "orpwater", "orp sediment",
 					"concentration water", "concentration sediment", "dissolved concentration", "tbars", "taoc", "algae", "bacteria"));
+
+	public String[] comboboxFieldList = { "All fields", "Doi", "Total Time", "Total Dose", "Injection Mode", "Ecosystem", "Nanoparticle",
+			"PH", "Temperature", "Conductivity", "Dissolved Oxygen", "ORP Water", "ORP Sediment", "Concentration Water",
+			"Concentration Sediment", "Dissolved Concentration", "TBARS", "TAOC", "Algae", "Bateria" };
 
 	// End of variables declaration//GEN-END:variables
 }
