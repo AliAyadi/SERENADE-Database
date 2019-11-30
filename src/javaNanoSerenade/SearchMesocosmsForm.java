@@ -5,14 +5,36 @@
  */
 package javaNanoSerenade;
 
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
  * @author aliay
  */
-public class SearchMesocosmsForm extends javax.swing.JFrame {
+public class SearchMesocosmsForm extends JFrame {
 	MY_CONNECTION my_connection = new MY_CONNECTION();
 
 	/**
@@ -34,7 +56,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 		jComboBoxMT.setVisible(true);
 
 		// ajout d une icone serende pour la page
-		this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/lloogg_ser.png")).getImage());
+		this.setIconImage(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/lloogg_ser.png")).getImage());
 
 		// populate the jtable
 		// mesocosm.fillMesocosmJTable(jTable1);
@@ -50,47 +72,47 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-		jMenuItem1 = new javax.swing.JMenuItem();
-		jPanel1 = new javax.swing.JPanel();
-		jButtonClearCheckboxes = new javax.swing.JButton();
-		jButton1 = new javax.swing.JButton();
-		jButtonPrintResults = new javax.swing.JButton();
-		jButtonExportResults = new javax.swing.JButton();
-		jPanel13 = new javax.swing.JPanel();
-		jLabel10 = new javax.swing.JLabel();
-		jComboBoxFields = new javax.swing.JComboBox<>();
-		jLabel14 = new javax.swing.JLabel();
-		jComboBoxMT = new javax.swing.JComboBox<>();
-		jLabel15 = new javax.swing.JLabel();
-		jLabelTap = new javax.swing.JLabel();
-		jTextFieldSearch = new javax.swing.JTextField();
-		jButtonValidateSearch = new javax.swing.JButton();
-		jLabelLowerB = new javax.swing.JLabel();
-		jLabelHigherB = new javax.swing.JLabel();
-		modelLB = new SpinnerNumberModel(0, 0, 1000, 0.1);
-		modelHB = new SpinnerNumberModel(0, 0, 1000, 0.1);
+		jMenuItem1 = new JMenuItem();
+		jPanel1 = new JPanel();
+		jButtonClearCheckboxes = new JButton();
+		jButton1 = new JButton();
+		jButtonPrintResults = new JButton();
+		jButtonExportResults = new JButton();
+		jPanel13 = new JPanel();
+		jLabel10 = new JLabel();
+		jComboBoxFields = new JComboBox<>();
+		jLabel14 = new JLabel();
+		jComboBoxMT = new JComboBox<>();
+		jLabel15 = new JLabel();
+		jLabelTap = new JLabel();
+		jTextFieldSearch = new JTextField();
+		jButtonValidateSearch = new JButton();
+		jLabelLowerB = new JLabel();
+		jLabelHigherB = new JLabel();
+		modelLB = new SpinnerNumberModel(0, 0, 1000, 0.01);
+		modelHB = new SpinnerNumberModel(0, 0, 1000, 0.01);
 		spinnerLowerB = new JSpinner(modelLB);
 		spinnerHeigherB = new JSpinner(modelHB);
-		jScrollPane2 = new javax.swing.JScrollPane();
-		table = new javax.swing.JTable();
-		jMenuBar1 = new javax.swing.JMenuBar();
-		jMenu1 = new javax.swing.JMenu();
-		jMenu2 = new javax.swing.JMenu();
-		jMenu3 = new javax.swing.JMenu();
-		jMenu5 = new javax.swing.JMenu();
-		jSeparator1 = new javax.swing.JPopupMenu.Separator();
-		jMenu4 = new javax.swing.JMenu();
+		jScrollPane2 = new JScrollPane();
+		table = new JTable();
+		jMenuBar1 = new JMenuBar();
+		jMenu1 = new JMenu();
+		jMenu2 = new JMenu();
+		jMenu3 = new JMenu();
+		jMenu5 = new JMenu();
+		jSeparator1 = new JPopupMenu.Separator();
+		jMenu4 = new JMenu();
 
 		jMenuItem1.setText("jMenuItem1");
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Advanced Search Mesocosms (SERENADE)");
 
 		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
 		jButtonClearCheckboxes.setBackground(new java.awt.Color(204, 204, 204));
 		jButtonClearCheckboxes.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-		jButtonClearCheckboxes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/reset_button.png"))); // NOI18N
+		jButtonClearCheckboxes.setIcon(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/reset_button.png"))); // NOI18N
 		jButtonClearCheckboxes.setBorderPainted(false);
 		jButtonClearCheckboxes.setContentAreaFilled(false);
 		jButtonClearCheckboxes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -100,7 +122,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 			}
 		});
 
-		jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/exit_button.png"))); // NOI18N
+		jButton1.setIcon(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/exit_button.png"))); // NOI18N
 		jButton1.setBorderPainted(false);
 		jButton1.setContentAreaFilled(false);
 		jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -111,26 +133,25 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 			}
 		});
 
-		jButtonPrintResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/print_button_1.png"))); // NOI18N
+		jButtonPrintResults.setIcon(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/print_button_1.png"))); // NOI18N
 		jButtonPrintResults.setBorderPainted(false);
 		jButtonPrintResults.setContentAreaFilled(false);
 		jButtonPrintResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-		jButtonExportResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/EXP8button.png"))); // NOI18N
+		jButtonExportResults.setIcon(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/EXP8button.png"))); // NOI18N
 		jButtonExportResults.setBorderPainted(false);
 		jButtonExportResults.setContentAreaFilled(false);
 		jButtonExportResults.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 		jPanel13.setBackground(new java.awt.Color(204, 204, 204));
-		jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Search fields",
-				javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-				new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+		jPanel13.setBorder(BorderFactory.createTitledBorder(new MatteBorder(null), "Search fields", TitledBorder.CENTER,
+				TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
 		jLabel10.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
 		jLabel10.setForeground(new java.awt.Color(102, 102, 102));
 		jLabel10.setText("Select Field (s): ");
 
-		jComboBoxFields.setModel(new javax.swing.DefaultComboBoxModel<>(
+		jComboBoxFields.setModel(new DefaultComboBoxModel<>(
 				new String[] { "All fields", "doi", "Total_time", "Total_dose", "Injection_mode", "Ecosystem", "Nanoparticle", "PH",
 						"Temperature", "Conductivity", "Dissolved_oxygen", "ORP_water", "ORP_sediment", "Concentration_water",
 						"Concentration_sediment", "Dissolved_concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
@@ -144,7 +165,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 		jLabel14.setForeground(new java.awt.Color(102, 102, 102));
 		jLabel14.setText("at ");
 
-		jComboBoxMT.setModel(new javax.swing.DefaultComboBoxModel<>(
+		jComboBoxMT.setModel(new DefaultComboBoxModel<>(
 				new String[] { "All measure times", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
@@ -162,7 +183,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 			}
 		});
 
-		jButtonValidateSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaNanoSerenade/image/search_button.png"))); // NOI18N
+		jButtonValidateSearch.setIcon(new ImageIcon(getClass().getResource("/javaNanoSerenade/image/search_button.png"))); // NOI18N
 		jButtonValidateSearch.setBorderPainted(false);
 		jButtonValidateSearch.setContentAreaFilled(false);
 		jButtonValidateSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -180,88 +201,70 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 		jLabelHigherB.setForeground(new java.awt.Color(102, 102, 102));
 		jLabelHigherB.setText("Higher bound:");
 
-		javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+		GroupLayout jPanel13Layout = new GroupLayout(jPanel13);
 		jPanel13.setLayout(jPanel13Layout);
-		jPanel13Layout.setHorizontalGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel13Layout.createSequentialGroup().addGap(29, 29, 29).addComponent(jLabel10).addGap(10, 10, 10)
-						.addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(20, 20, 20).addComponent(jLabelTap).addGap(10, 10, 10)
-						.addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(20, 20, 20).addComponent(jLabelLowerB).addGap(10, 10, 10)
-						.addComponent(spinnerLowerB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(jPanel13Layout.createSequentialGroup().addGap(20, 20, 20).addComponent(jLabelHigherB)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(spinnerHeigherB, javax.swing.GroupLayout.PREFERRED_SIZE, 84,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel14)
-										.addGap(20, 20, 20).addComponent(jLabel15).addGap(10, 10, 10)
-										.addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE, 158,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(25, 25, 25))
-								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-										jPanel13Layout.createSequentialGroup().addGap(360, 360, 360)
-												.addComponent(jButtonValidateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135,
-														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		jPanel13Layout
-				.setVerticalGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(jPanel13Layout.createSequentialGroup().addContainerGap()
-								.addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(jLabel10)
-										.addComponent(jComboBoxFields, javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(jLabel14)
-										.addComponent(jComboBoxMT, javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(jLabel15).addComponent(jLabelTap)
-										.addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(jLabelLowerB).addComponent(jLabelHigherB)
-										.addComponent(spinnerLowerB, javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(spinnerHeigherB, javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-								.addComponent(jButtonValidateSearch).addGap(8, 8, 8)));
+		jPanel13Layout.setHorizontalGroup(jPanel13Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(jPanel13Layout
+				.createSequentialGroup().addGap(29, 29, 29).addComponent(jLabel10).addGap(10, 10, 10)
+				.addComponent(jComboBoxFields, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE).addGap(20, 20, 20)
+				.addComponent(jLabelTap).addGap(10, 10, 10)
+				.addComponent(jTextFieldSearch, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE).addGap(20, 20, 20)
+				.addComponent(jLabelLowerB).addGap(10, 10, 10)
+				.addComponent(spinnerLowerB, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+				.addGroup(jPanel13Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(jPanel13Layout.createSequentialGroup().addGap(20, 20, 20).addComponent(jLabelHigherB)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(spinnerHeigherB, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jLabel14).addGap(20, 20, 20)
+								.addComponent(jLabel15).addGap(10, 10, 10)
+								.addComponent(jComboBoxMT, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE).addGap(25, 25, 25))
+						.addGroup(GroupLayout.Alignment.TRAILING,
+								jPanel13Layout.createSequentialGroup().addGap(360, 360, 360)
+										.addComponent(jButtonValidateSearch, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)))
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		jPanel13Layout.setVerticalGroup(jPanel13Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(jPanel13Layout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(jPanel13Layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(jLabel10)
+						.addComponent(jComboBoxFields, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel14)
+						.addComponent(jComboBoxMT, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabel15).addComponent(jLabelTap)
+						.addComponent(jTextFieldSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jLabelLowerB).addComponent(jLabelHigherB)
+						.addComponent(spinnerLowerB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(spinnerHeigherB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE).addComponent(jButtonValidateSearch)
+				.addGap(8, 8, 8)));
 
-		table.setModel(new javax.swing.table.DefaultTableModel(new Object[][] { {}, {}, {}, {} }, new String[] {
+		table.setModel(new DefaultTableModel(new Object[][] { {}, {}, {}, {} }, new String[] {
 
 		}));
 		jScrollPane2.setViewportView(table);
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout
 				.createSequentialGroup().addGap(163, 163, 163)
-				.addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(127, 127, 127)
-				.addComponent(jButtonExportResults, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(137, 137, 137)
-				.addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(125, 125, 125)
-				.addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-						.addGroup(jPanel1Layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jPanel13,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jScrollPane2))
-						.addGap(499, 499, 499)));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(jButtonClearCheckboxes, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE).addGap(127, 127, 127)
+				.addComponent(jButtonExportResults, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE).addGap(137, 137, 137)
+				.addComponent(jButtonPrintResults, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE).addGap(125, 125, 125)
+				.addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(GroupLayout.Alignment.TRAILING,
+						jPanel1Layout.createSequentialGroup()
+								.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(jPanel13, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(jScrollPane2))
+								.addGap(499, 499, 499)));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap()
-						.addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(jPanel13, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18).addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
 						.addGap(89, 89, 89)
-						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-								.addComponent(jButtonClearCheckboxes, javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jButtonExportResults).addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-								.addComponent(jButtonPrintResults, javax.swing.GroupLayout.PREFERRED_SIZE, 35,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+								.addComponent(jButtonClearCheckboxes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(jButtonExportResults).addComponent(jButton1, GroupLayout.Alignment.TRAILING)
+								.addComponent(jButtonPrintResults, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(253, Short.MAX_VALUE)));
 
 		jMenu1.setText("File");
@@ -283,17 +286,14 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 
 		setJMenuBar(jMenuBar1);
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-						layout.createSequentialGroup().addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1287, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(0, 0, 0)));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout
-						.createSequentialGroup().addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
+				layout.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 1287, GroupLayout.PREFERRED_SIZE).addGap(0, 0, 0)));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+						.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGap(0, 0, Short.MAX_VALUE)));
 
 		pack();
@@ -369,6 +369,8 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 		double LB = modelLB.getNumber().doubleValue();
 		double HB = modelHB.getNumber().doubleValue();
 
+		int intLB = (int) LB;
+		int intLH = (int) HB;
 		// keywords à chercher
 		String valToSearch = jTextFieldSearch.getText();
 
@@ -715,9 +717,9 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 		 * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
@@ -727,7 +729,7 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(ManageMesocosmsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
 			java.util.logging.Logger.getLogger(ManageMesocosmsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+		} catch (UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(ManageMesocosmsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		// </editor-fold>
@@ -741,33 +743,33 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton					jButton1;
-	private javax.swing.JButton					jButtonClearCheckboxes;
-	private javax.swing.JButton					jButtonExportResults;
-	private javax.swing.JButton					jButtonPrintResults;
-	private javax.swing.JButton					jButtonValidateSearch;
-	private javax.swing.JComboBox<String>		jComboBoxFields;
-	private javax.swing.JComboBox<String>		jComboBoxMT;
-	private javax.swing.JLabel					jLabel10;
-	private javax.swing.JLabel					jLabel14;
-	private javax.swing.JLabel					jLabel15;
-	private javax.swing.JLabel					jLabelHigherB;
-	private javax.swing.JLabel					jLabelLowerB;
-	private javax.swing.JLabel					jLabelTap;
-	private javax.swing.JMenu					jMenu1;
-	private javax.swing.JMenu					jMenu2;
-	private javax.swing.JMenu					jMenu3;
-	private javax.swing.JMenu					jMenu4;
-	private javax.swing.JMenu					jMenu5;
-	private javax.swing.JMenuBar				jMenuBar1;
-	private javax.swing.JMenuItem				jMenuItem1;
-	private javax.swing.JPanel					jPanel1;
-	private javax.swing.JPanel					jPanel13;
-	private javax.swing.JScrollPane				jScrollPane2;
-	private javax.swing.JPopupMenu.Separator	jSeparator1;
-	private javax.swing.JTextField				jTextFieldSearch;
-	private javax.swing.JTable					table;
-	private JSpinner							spinnerLowerB, spinnerHeigherB;
-	private SpinnerNumberModel					modelLB, modelHB;
+	private JButton					jButton1;
+	private JButton					jButtonClearCheckboxes;
+	private JButton					jButtonExportResults;
+	private JButton					jButtonPrintResults;
+	private JButton					jButtonValidateSearch;
+	private JComboBox<String>		jComboBoxFields;
+	private JComboBox<String>		jComboBoxMT;
+	private JLabel					jLabel10;
+	private JLabel					jLabel14;
+	private JLabel					jLabel15;
+	private JLabel					jLabelHigherB;
+	private JLabel					jLabelLowerB;
+	private JLabel					jLabelTap;
+	private JMenu					jMenu1;
+	private JMenu					jMenu2;
+	private JMenu					jMenu3;
+	private JMenu					jMenu4;
+	private JMenu					jMenu5;
+	private JMenuBar				jMenuBar1;
+	private JMenuItem				jMenuItem1;
+	private JPanel					jPanel1;
+	private JPanel					jPanel13;
+	private JScrollPane				jScrollPane2;
+	private JPopupMenu.Separator	jSeparator1;
+	private JTextField				jTextFieldSearch;
+	private JTable					table;
+	private JSpinner				spinnerLowerB, spinnerHeigherB;
+	private SpinnerNumberModel		modelLB, modelHB;
 	// End of variables declaration//GEN-END:variables
 }
