@@ -31,6 +31,16 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         
         initComponents();
         
+        jLabelLowerB.setVisible(false);
+                        jTextFieldLowerB.setVisible(false);
+                        jLabelHigherB.setVisible(false);
+                        jTextFieldHigherB.setVisible(false);
+                       // jTextFieldLowerB.setEditable(false);
+                        //jTextFieldHigherB.setEditable(false);
+                        jLabelTap.setVisible(false);
+                        jTextFieldSearch.setVisible(false);
+                        //jTextFieldSearch.setEditable(false);
+                        jComboBoxMT.setVisible(true);
         
         
          //ajout d une icone serende pour la page
@@ -352,12 +362,12 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
 //    }
     
     private void jButtonClearCheckboxesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearCheckboxesActionPerformed
-        jLabelTap.setVisible(true);
-        jTextFieldSearch.setVisible(true);
-        jLabelLowerB.setVisible(true);
-        jTextFieldLowerB.setVisible(true);
+        jLabelTap.setVisible(false);
+        jTextFieldSearch.setVisible(false);
+        jLabelLowerB.setVisible(false);
+        jTextFieldLowerB.setVisible(false);
         jLabelHigherB.setVisible(false);
-        jTextFieldHigherB.setVisible(true);
+        jTextFieldHigherB.setVisible(false);
         // remove text from all jTextfields
         jComboBoxFields.setSelectedIndex(0);
         jComboBoxMT.setSelectedIndex(0);
@@ -375,10 +385,12 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonValidateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateSearchActionPerformed
-        try {
+        
+        
+                        
       
-        PreparedStatement stGetSearch;
-	ResultSet searchResult;
+//          PreparedStatement stGetSearch;
+//          ResultSet searchResult;
  
         
         
@@ -399,9 +411,6 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
        int selectedField =  jComboBoxFields.getSelectedIndex();
         
        switch (selectedField) {
-        case 0:
-            cond1 = "";
-            break;
         case 1:
             cond1 = "LOWER(doi) LIKE '%"+valToSearch+"%'";
             break;
@@ -461,7 +470,8 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             break;
         case 20:
             cond1 = "Bacteria BETWEEN "+LB+" AND "+HB+" ";
-            break; 
+            break;
+            default:  cond1 ="";
         } 
         
         
@@ -469,9 +479,6 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
         int measureTime = jComboBoxMT.getSelectedIndex();
         
        switch (measureTime) {
-        case 0:
-            cond2 = "";
-            break;
         case 1:
             cond2 = " Measure_time == 1";
             break;
@@ -564,74 +571,98 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
             break;
          case 31:
             cond2 = " Measure_time == 31";
-            break;        
+            break;
+            default:  cond2 ="";
         }         
         
-
+        System.out.println(cond);   
+        System.out.println(cond1);  
+        System.out.println(cond2); 
 	        
-       	if(cond1.isEmpty())
-        {
-            if(!(cond2.isEmpty()))
-            {
-            cond = " WHERE " + cond2;
-            }else{
-               cond = cond; 
-            }
-        }
-        else
-            {
-            cond = " WHERE " + cond1;
-            if(!(cond2.isEmpty()))
-            cond = cond + " AND " + cond2;
-            }
-    
+//       	if(cond1.isEmpty())
+//        {
+//            if(!(cond2.isEmpty()))
+//            {
+//            cond = " WHERE " + cond2;
+//            }else{
+//               cond = cond; 
+//            }
+//        }
+//        else
+//            {
+//            cond = " WHERE " + cond1;
+//            if(!(cond2.isEmpty()))
+//            cond = cond + " AND " + cond2;
+//            }
         
-        String SearchGQuery = "SELECT doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
-                
         
-        stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
-        searchResult = stGetSearch.executeQuery();
-                        
-        DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-        
-        Object[] row;
-        
-            while(searchResult.next())
-            {
-                row = new Object[20];
-                row[0] = searchResult.getString(1);
-                row[1] = searchResult.getInt(2);
-                row[2] = searchResult.getFloat(3);
-                row[3] = searchResult.getString(4);
-                row[4] = searchResult.getString(5);
-                row[5] = searchResult.getInt(6);
-                row[6] = searchResult.getString(7);
-                row[7] = searchResult.getFloat(8);
-                row[8] = searchResult.getFloat(9);
-                row[9] = searchResult.getFloat(10);
-                row[10] = searchResult.getFloat(11);
-                row[11] = searchResult.getFloat(12);
-                row[12] = searchResult.getFloat(13);
-                row[13] = searchResult.getFloat(14);
-                row[14] = searchResult.getFloat(15);
-                row[15] = searchResult.getFloat(16);
-                row[16] = searchResult.getFloat(17);
-                row[17] = searchResult.getFloat(18);
-                row[18] = searchResult.getFloat(19);
-                row[19] = searchResult.getFloat(20);
-               
-                tableModel.addRow(row);
-            }
+//        if(cond1.isEmpty() && cond2.isEmpty())
+//            {
+//            cond = ""; 
+//            }else if(!(cond1.isEmpty()))
+//                    {
+//                     cond = " WHERE " + cond1;
+//                    }
+//                    else if (!(cond2.isEmpty()))
+//                            
+//                            {
+//                                cond = " WHERE " + cond2;        
+//                            }
+//                    else {
+//                        cond = cond + " AND " + cond2;
+//                    }
             
-            stGetSearch.close();
+           
+        
+        
+    //try {
+        
+//        String SearchGQuery = "SELECT doi, Total_time, Total_dose, Injection_mode, Ecosystem, Measure_time, Nanoparticle, PH, Temperature, Conductivity, Dissolved_oxygen, ORP_water, ORP_sediment, Concentration_water, Concentration_sediment, Dissolved_concentration, TBARS, TAOC, Algae, Bacteria FROM experiment e, sampling s, measure m WHERE e.IDE = s.IDE AND s.IDS = m.IDS " + cond + "Order by Measure_time";       
+//                
+//        
+//        stGetSearch = my_connection.createConnection().prepareStatement(SearchGQuery);
+//        searchResult = stGetSearch.executeQuery();
+        
+        
+           
+           
+                        
+//       DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+//        table.setModel(new DefaultTableModel(null, new Object[]{"DOI", "Nanoparticle", "Total dose", "Injection mode", "Ecosystem", "Total time", "Measure time", "PH", "Temperature", "Conductivity", "Dissolved oxygen", "ORP water", "ORP sediment", "Concentration water", "Concentration sediment", "Dissolved concentration", "TBARS", "TAOC", "Algae", "Bacteria"}));
+//      
+//        Object[] row;
+//        
+//            while(searchResult.next())
+//            {
+//                row = new Object[20];
+//                row[0] = searchResult.getString(1);
+//                row[1] = searchResult.getInt(2);
+//                row[2] = searchResult.getFloat(3);
+//                row[3] = searchResult.getString(4);
+//                row[4] = searchResult.getString(5);
+//                row[5] = searchResult.getInt(6);
+//                row[6] = searchResult.getString(7);
+//                row[7] = searchResult.getFloat(8);
+//                row[8] = searchResult.getFloat(9);
+//                row[9] = searchResult.getFloat(10);
+//                row[10] = searchResult.getFloat(11);
+//                row[11] = searchResult.getFloat(12);
+//                row[12] = searchResult.getFloat(13);
+//                row[13] = searchResult.getFloat(14);
+//                row[14] = searchResult.getFloat(15);
+//                row[15] = searchResult.getFloat(16);
+//                row[16] = searchResult.getFloat(17);
+//                row[17] = searchResult.getFloat(18);
+//                row[18] = searchResult.getFloat(19);
+//                row[19] = searchResult.getFloat(20);
+//               
+//                tableModel.addRow(row);
+//            }
+            
+            //stGetSearch.close();
             
                             
-        } catch (Exception e) {
-            e.printStackTrace();
-                    
-        
-			
-	}
+        //
                 
                  
         
@@ -641,14 +672,22 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
     private void jComboBoxFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFieldsActionPerformed
         //String selectedValue = (String) jComboBoxFields.getSelectedItem();
         
-        if (jComboBoxFields.getSelectedItem().toString().contains("doi") || jComboBoxFields.getSelectedItem().toString().contains("Injection_mode")
+         if (jComboBoxFields.getSelectedItem().toString().contains("doi") || jComboBoxFields.getSelectedItem().toString().contains("Injection_mode")
                 ||  jComboBoxFields.getSelectedItem().toString().contains("Ecosystem")|| jComboBoxFields.getSelectedItem().toString().contains("Nanoparticle")) 
             {           jLabelLowerB.setVisible(false);
                         jTextFieldLowerB.setVisible(false);
                         jLabelHigherB.setVisible(false);
                         jTextFieldHigherB.setVisible(false); 
+                        
+                        jTextFieldLowerB.setEditable(false);
+                        jTextFieldHigherB.setEditable(false);
+                        
                         jLabelTap.setVisible(true);
                         jTextFieldSearch.setVisible(true);
+                        
+                        jTextFieldSearch.setEditable(true);
+                        
+                        jComboBoxMT.setVisible(true);
             }
             else if (jComboBoxFields.getSelectedItem().toString().contains("Total_time") || jComboBoxFields.getSelectedItem().toString().contains("Total_dose")
                 || jComboBoxFields.getSelectedItem().toString().contains("PH")|| jComboBoxFields.getSelectedItem().toString().contains("Temperature") 
@@ -658,12 +697,35 @@ public class SearchMesocosmsForm extends javax.swing.JFrame {
                 || jComboBoxFields.getSelectedItem().toString().contains("Dissolved_concentration")|| jComboBoxFields.getSelectedItem().toString().contains("TBARS")
                 || jComboBoxFields.getSelectedItem().toString().contains("TAOC") || jComboBoxFields.getSelectedItem().toString().contains("Algae")|| jComboBoxFields.getSelectedItem().toString().contains("Bacteria")) 
             {           jLabelTap.setVisible(false);
-                        jTextFieldSearch.setVisible(false); 
+                        jTextFieldSearch.setVisible(false);
+                        
+                        jTextFieldSearch.setEditable(false);
+                        
                         jLabelLowerB.setVisible(true);
                         jTextFieldLowerB.setVisible(true);
                         jLabelHigherB.setVisible(true);
                         jTextFieldHigherB.setVisible(true);
+                        
+                        jTextFieldLowerB.setEditable(true);
+                        jTextFieldHigherB.setEditable(true);
+                        
+                        jComboBoxMT.setVisible(true);
             }
+            else if (jComboBoxFields.getSelectedItem().toString().contains("All fields")){
+                jLabelLowerB.setVisible(false);
+                jTextFieldLowerB.setVisible(false);
+                jTextFieldLowerB.setEditable(false);
+                jLabelHigherB.setVisible(false);
+                jTextFieldHigherB.setVisible(false); 
+                jTextFieldHigherB.setEditable(false);
+                
+                jLabelTap.setVisible(false);
+                jTextFieldSearch.setVisible(false);
+                jTextFieldSearch.setEditable(false);
+                        
+                jComboBoxMT.setVisible(true);
+            }
+
     }//GEN-LAST:event_jComboBoxFieldsActionPerformed
 
     private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed

@@ -809,7 +809,7 @@ public class ManageMesocosmsForm extends javax.swing.JFrame {
                                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(48, 48, 48)
+                                    .addGap(51, 51, 51)
                                     .addComponent(jButtonImport)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonAddMesocosm, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -853,7 +853,7 @@ public class ManageMesocosmsForm extends javax.swing.JFrame {
                 .addComponent(jButtonRemoveMesocosm)
                 .addComponent(jButtonEditMesocosm)
                 .addComponent(jButtonAddMesocosm)
-                .addComponent(jButtonImport))
+                .addComponent(jButtonImport, javax.swing.GroupLayout.Alignment.TRAILING))
             .addGap(11, 11, 11)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
             .addGap(33, 33, 33))
@@ -1088,7 +1088,7 @@ public class ManageMesocosmsForm extends javax.swing.JFrame {
     private void jButtonRemoveMesocosmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveMesocosmActionPerformed
         String nanoparticle = jTextFieldName.getText();
         int measureTime = Integer.parseInt(jTextFieldMeasTime.getText());
-        int opt = JOptionPane.showConfirmDialog(null, "The deletion of the mesocosm "+ nanoparticle +" will cause the deletion of all its instantiation at the measure time " +measureTime+ ". Are you sure you want to delete all these instances? ", "Remove Mesocosm", JOptionPane.YES_NO_OPTION);
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the sampling "+ nanoparticle +" at the sampling time " +measureTime+ " ? ", "Remove Mesocosm", JOptionPane.YES_NO_OPTION);
         if(opt==0){
          //Récupérer le numéro de la ligne tout en l'affichant
         int row = jTable1.getSelectedRow();
@@ -1145,15 +1145,21 @@ public class ManageMesocosmsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTBARSActionPerformed
 
     private void jButtonImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImportActionPerformed
-        OpenFile of = new OpenFile();
-        
-        
-        try{
-            of.PickMe();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        ///textArea.setText(of.sb.toString());
+//        OpenFile of = new OpenFile();
+//        
+//        
+//        try{
+//            of.PickMe();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        Affichage aff = new Affichage();
+//        aff.setVisible(true);
+//        aff.pack();
+//        aff.setLocationRelativeTo(null);
+//        aff.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        
+//        textArea.setText(of.sb.toString());
         
     }//GEN-LAST:event_jButtonImportActionPerformed
 

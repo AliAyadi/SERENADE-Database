@@ -339,12 +339,12 @@ public class MESOCOSM {
           {
     	 PreparedStatement st_deleteMesocosm;
          ResultSet rs_resutltIDE;
-         //String deleteMQuery = "DELETE FROM measure WHERE IDM ="+ rowIdM;
-         String deleteSQuery = "DELETE FROM sampling WHERE IDS="+ rowIdS;
+         String deleteMQuery = "DELETE FROM measure WHERE IDM ="+ rowIdM;
+         //String deleteSQuery = "DELETE FROM sampling WHERE IDS="+ rowIdS;
 
          try {
                         
-             st_deleteMesocosm = my_connection.createConnection().prepareStatement(deleteSQuery);
+             st_deleteMesocosm = my_connection.createConnection().prepareStatement(deleteMQuery);
                  
              
              return st_deleteMesocosm.executeUpdate() > 0;
