@@ -5,6 +5,9 @@
  */
 package javaNanoSerenade;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
@@ -152,9 +155,9 @@ public class SearchMesocosmsForm extends JFrame {
 		jLabel10.setText("Select Field (s): ");
 
 		jComboBoxFields.setModel(new DefaultComboBoxModel<>(
-				new String[] { "All fields", "doi", "Total_time", "Total_dose", "Injection_mode", "Ecosystem", "Nanoparticle", "PH",
-						"Temperature", "Conductivity", "Dissolved_oxygen", "ORP_water", "ORP_sediment", "Concentration_water",
-						"Concentration_sediment", "Dissolved_concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
+				new String[] { "All fields", "Doi", "Total Time", "Total Dose", "Injection Mode", "Ecosystem", "Nanoparticle", "PH",
+						"Temperature", "Conductivity", "Dissolved Oxygen", "ORP Water", "ORP Sediment", "Concentration Water",
+						"Concentration Sediment", "Dissolved Concentration", "TBARS", "TAOC", "Algae", "Bateria", " " }));
 		jComboBoxFields.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jComboBoxFieldsActionPerformed(evt);
@@ -449,104 +452,8 @@ public class SearchMesocosmsForm extends JFrame {
 
 		// String selectedTime = (String) jComboBoxFields.getSelectedItem();
 		int measureTime = jComboBoxMT.getSelectedIndex();
-
-		switch (measureTime) {
-		case 1:
-			cond2 = " Measure_time == 1";
-			break;
-		case 2:
-			cond2 = " Measure_time == 2";
-			break;
-		case 3:
-			cond2 = " Measure_time == 3";
-			break;
-		case 4:
-			cond2 = " Measure_time == 4";
-			break;
-		case 5:
-			cond2 = " Measure_time == 5";
-			break;
-		case 6:
-			cond2 = " Measure_time == 6";
-			break;
-		case 7:
-			cond2 = " Measure_time == 7";
-			break;
-		case 8:
-			cond2 = " Measure_time == 8";
-			break;
-		case 9:
-			cond2 = " Measure_time == 9";
-			break;
-		case 10:
-			cond2 = " Measure_time == 10";
-			break;
-		case 11:
-			cond2 = " Measure_time == 11";
-			break;
-		case 12:
-			cond2 = " Measure_time == 12";
-			break;
-		case 13:
-			cond2 = " Measure_time == 13";
-			break;
-		case 14:
-			cond2 = " Measure_time == 14";
-			break;
-		case 15:
-			cond2 = " Measure_time == 15";
-			break;
-		case 16:
-			cond2 = " Measure_time == 16";
-			break;
-		case 17:
-			cond2 = " Measure_time == 17";
-			break;
-		case 18:
-			cond2 = " Measure_time == 18";
-			break;
-		case 19:
-			cond2 = " Measure_time == 19";
-			break;
-		case 20:
-			cond2 = " Measure_time == 20";
-			break;
-		case 21:
-			cond2 = " Measure_time == 21";
-			break;
-		case 22:
-			cond2 = " Measure_time == 22";
-			break;
-		case 23:
-			cond2 = " Measure_time == 23";
-			break;
-		case 24:
-			cond2 = " Measure_time == 24";
-			break;
-		case 25:
-			cond2 = " Measure_time == 25";
-			break;
-		case 26:
-			cond2 = " Measure_time == 26";
-			break;
-		case 27:
-			cond2 = " Measure_time == 27";
-			break;
-		case 28:
-			cond2 = " Measure_time == 28";
-			break;
-		case 29:
-			cond2 = " Measure_time == 29";
-			break;
-		case 30:
-			cond2 = " Measure_time == 30";
-			break;
-		case 31:
-			cond2 = " Measure_time == 31";
-			break;
-		default:
-			cond2 = "";
-		}
+		if (measureTime != 0)
+			cond2 = " Measure_time == " + measureTime;
 
 		System.out.println(cond);
 		System.out.println(cond1);
@@ -641,12 +548,9 @@ public class SearchMesocosmsForm extends JFrame {
 	}// GEN-LAST:event_jButtonValidateSearchActionPerformed
 
 	private void jComboBoxFieldsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBoxFieldsActionPerformed
-		// String selectedValue = (String) jComboBoxFields.getSelectedItem();
+		String selectedField = jComboBoxFields.getSelectedItem().toString().toLowerCase();
 
-		if (jComboBoxFields.getSelectedItem().toString().contains("doi")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Injection_mode")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Ecosystem")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Nanoparticle")) {
+		if (TextFields.contains(selectedField)) {
 			jLabelLowerB.setVisible(false);
 			spinnerLowerB.setVisible(false);
 			jLabelHigherB.setVisible(false);
@@ -658,21 +562,8 @@ public class SearchMesocosmsForm extends JFrame {
 			jTextFieldSearch.setEditable(true);
 
 			jComboBoxMT.setVisible(true);
-		} else if (jComboBoxFields.getSelectedItem().toString().contains("Total_time")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Total_dose")
-				|| jComboBoxFields.getSelectedItem().toString().contains("PH")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Temperature")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Conductivity")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Dissolved_oxygen")
-				|| jComboBoxFields.getSelectedItem().toString().contains("ORP_water")
-				|| jComboBoxFields.getSelectedItem().toString().contains("ORP_sediment")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Concentration_water")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Concentration_sediment")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Dissolved_concentration")
-				|| jComboBoxFields.getSelectedItem().toString().contains("TBARS")
-				|| jComboBoxFields.getSelectedItem().toString().contains("TAOC")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Algae")
-				|| jComboBoxFields.getSelectedItem().toString().contains("Bacteria")) {
+
+		} else if (NumberFields.contains(selectedField)) {
 			jLabelTap.setVisible(false);
 			jTextFieldSearch.setVisible(false);
 
@@ -684,7 +575,7 @@ public class SearchMesocosmsForm extends JFrame {
 			spinnerHeigherB.setVisible(true);
 
 			jComboBoxMT.setVisible(true);
-		} else if (jComboBoxFields.getSelectedItem().toString().contains("All fields")) {
+		} else {// "all field" selected
 			jLabelLowerB.setVisible(false);
 			spinnerLowerB.setVisible(false);
 			jLabelHigherB.setVisible(false);
@@ -743,33 +634,40 @@ public class SearchMesocosmsForm extends JFrame {
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private JButton					jButton1;
-	private JButton					jButtonClearCheckboxes;
-	private JButton					jButtonExportResults;
-	private JButton					jButtonPrintResults;
-	private JButton					jButtonValidateSearch;
-	private JComboBox<String>		jComboBoxFields;
-	private JComboBox<String>		jComboBoxMT;
-	private JLabel					jLabel10;
-	private JLabel					jLabel14;
-	private JLabel					jLabel15;
-	private JLabel					jLabelHigherB;
-	private JLabel					jLabelLowerB;
-	private JLabel					jLabelTap;
-	private JMenu					jMenu1;
-	private JMenu					jMenu2;
-	private JMenu					jMenu3;
-	private JMenu					jMenu4;
-	private JMenu					jMenu5;
-	private JMenuBar				jMenuBar1;
-	private JMenuItem				jMenuItem1;
-	private JPanel					jPanel1;
-	private JPanel					jPanel13;
-	private JScrollPane				jScrollPane2;
-	private JPopupMenu.Separator	jSeparator1;
-	private JTextField				jTextFieldSearch;
-	private JTable					table;
-	private JSpinner				spinnerLowerB, spinnerHeigherB;
-	private SpinnerNumberModel		modelLB, modelHB;
+	private JButton							jButton1;
+	private JButton							jButtonClearCheckboxes;
+	private JButton							jButtonExportResults;
+	private JButton							jButtonPrintResults;
+	private JButton							jButtonValidateSearch;
+	private JComboBox<String>				jComboBoxFields;
+	private JComboBox<String>				jComboBoxMT;
+	private JLabel							jLabel10;
+	private JLabel							jLabel14;
+	private JLabel							jLabel15;
+	private JLabel							jLabelHigherB;
+	private JLabel							jLabelLowerB;
+	private JLabel							jLabelTap;
+	private JMenu							jMenu1;
+	private JMenu							jMenu2;
+	private JMenu							jMenu3;
+	private JMenu							jMenu4;
+	private JMenu							jMenu5;
+	private JMenuBar						jMenuBar1;
+	private JMenuItem						jMenuItem1;
+	private JPanel							jPanel1;
+	private JPanel							jPanel13;
+	private JScrollPane						jScrollPane2;
+	private JPopupMenu.Separator			jSeparator1;
+	private JTextField						jTextFieldSearch;
+	private JTable							table;
+	private JSpinner						spinnerLowerB, spinnerHeigherB;
+	private SpinnerNumberModel				modelLB, modelHB;
+	public static final ArrayList<String>	TextFields	= new ArrayList<String>(
+			Arrays.asList("doi", "injection mode", "ecosystem", "nanoparticle"));
+
+	public static final ArrayList<String> NumberFields = new ArrayList<String>(
+			Arrays.asList("total time", "total dose", "ph", "temperature", "conductivity", "dissolved oxygen", "orpwater", "orp sediment",
+					"concentration water", "concentration sediment", "dissolved concentration", "tbars", "taoc", "algae", "bacteria"));
+
 	// End of variables declaration//GEN-END:variables
 }
